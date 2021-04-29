@@ -1,0 +1,99 @@
+<div class="content">
+    <div class="title">
+       <h1>Ventas</h1> 
+    </div>
+    <button class="mat-elevation-z8" (click)=navegarParaVentaCreate() mat-raised-button color="primary">
+        <i class="material-icons">add_circle</i>
+        Registrar venta</button>
+
+    <div class="mat-elevation-z8 content table">
+        <table class="table" mat-table [dataSource]="ventas">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="venid">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let row"> {{row.venid}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="vendescrip">
+              <th mat-header-cell *matHeaderCellDef> DESCRIPCIÓN </th>
+              <td mat-cell *matCellDef="let row"> {{row.vendescrip}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="venestado">
+              <th mat-header-cell *matHeaderCellDef> ESTADO </th>
+              <td mat-cell *matCellDef="let row"> {{row.venestado}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="venfecha">
+              <th mat-header-cell *matHeaderCellDef> FECHA </th>
+              <td mat-cell *matCellDef="let row"> {{row.venfecha}} </td>
+            </ng-container>
+    
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="vennrocomprobante">
+                <th mat-header-cell *matHeaderCellDef> NRO COMPROBANTE</th>
+                <td mat-cell *matCellDef="let row"> {{row.vennrocomprobante}} </td>
+              </ng-container>
+    
+              <!-- Symbol Column -->
+            <ng-container matColumnDef="ventipo">
+                <th mat-header-cell *matHeaderCellDef> TIPO</th>
+                <td mat-cell *matCellDef="let row"> {{row.ventipo}} </td>
+              </ng-container>
+    
+               <!-- Symbol Column -->
+            <ng-container matColumnDef="ventipocomprobante">
+                <th mat-header-cell *matHeaderCellDef> TIPO COMPROBANTE</th>
+                <td mat-cell *matCellDef="let row"> {{row.ventipocomprobante}} </td>
+              </ng-container>
+    
+               <!-- Symbol Column -->
+            <ng-container matColumnDef="ventotal">
+                <th mat-header-cell *matHeaderCellDef> TOTAL</th>
+                <td mat-cell *matCellDef="let row"> {{row.ventotal}} </td>
+              </ng-container>
+    
+              <!-- Symbol Column -->
+            <ng-container matColumnDef="ctrllog">
+                <th mat-header-cell *matHeaderCellDef> LOGS</th>
+                <td mat-cell *matCellDef="let row"> {{row.ctrllog}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="ventas">
+                <th mat-header-cell *matHeaderCellDef>VENTAS</th>
+                <td mat-cell *matCellDef="let row">
+                  <a class="ventas" routerLink="{{ row.venid }}/livros">
+                    <i class="material-icons">shop</i>
+                  </a>
+                </td>
+              </ng-container>
+    
+                 <!-- Symbol Column -->
+            <ng-container matColumnDef="acciones">
+                <th class="mat-header" mat-header-cell *matHeaderCellDef> ACCIONES</th>
+                <td mat-cell *matCellDef="let row"> 
+                    <a class="edit" href="">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <a class="delete" routerLink="delete/{{row.venid}}" href="">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+              </ng-container>
+    
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+  
+      
+      
+</div>

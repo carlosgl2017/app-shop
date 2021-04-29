@@ -1,0 +1,47 @@
+<form>
+    <h1>REGISTRAR VENTA</h1>
+    <mat-form-field class="form">
+        <mat-label>Descripción</mat-label>
+        <input matInput  [(ngModel)]="venta.vendescrip" type="text" name="vendescrip" placeholder="Descripción">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Estado</mat-label>
+        <input matInput  [(ngModel)]="venta.venestado" type="text" name="venestado" placeholder="Estado">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Fecha</mat-label>
+        <input matInput  [(ngModel)]="venta.venfecha" type="date" name="venfecha" placeholder="Fecha">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Numero comprobante</mat-label>
+        <input matInput  [(ngModel)]="venta.vennrocomprobante" type="number" name="nunnrocomprobante" placeholder="Número comprobante">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Tipo</mat-label>
+        <input matInput  [(ngModel)]="venta.ventipo" type="text" name="ventipo" placeholder="ventipo">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Tipo Comprobante</mat-label>
+        <input matInput  [(ngModel)]="venta.ventipocomprobante" type="text" name="ventipocomprobante" placeholder="tipo comprobante">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Total</mat-label>
+        <input matInput [(ngModel)]="venta.ventotal" type="text" name="ventotal" placeholder="Venta total">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Logs</mat-label>
+        <input matInput  [(ngModel)]="venta.ctrllog" type="text" name="ctrllog" placeholder="Logs">
+    </mat-form-field>
+
+    <div class="buttons">
+        <button (click)="create()" class="mat-elevation-z8" mat-stroked-button color="primary"> REGISTRAR  </button>
+        <button (click)="cancel()" class="mat-elevation-z8" mat-stroked-button color="warn"> CANCELAR </button>
+    </div>
+</form>
