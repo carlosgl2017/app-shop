@@ -1,0 +1,83 @@
+<form>
+    <h1>REGISTRAR PROVEEDOR</h1>
+    <mat-form-field class="form">
+        <mat-label>PROVEEDOR EMPRESA</mat-label>
+        <input matInput  [(ngModel)]="proveedor.provempresa" type="text" name="provempresa" placeholder="Empresa">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>NOMBRE DEL PROVEEDOR</mat-label>
+        <input matInput  [(ngModel)]="proveedor.provnombre" type="text" name="provnombre" placeholder="Nombre">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>APELLIDO PATERNO</mat-label>
+        <input matInput  [(ngModel)]="proveedor.provmaterno" type="text" name="provmaterno" placeholder="Apellido Paterno">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>APELLIDO MATERNO</mat-label>
+        <input matInput  [(ngModel)]="proveedor.provpaterno" type="text" name="provpaterno" placeholder="Apellido Materno">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>NIT/CI</mat-label>
+        <input matInput  [(ngModel)]="proveedor.provcinit" type="text" name="provcinit" placeholder="NIT/CI">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>DEPARTAMENTO</mat-label>
+        <input matInput  [(ngModel)]="proveedor.provdepto" type="text" name="provdepto" placeholder="Departamento">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>LUGAR</mat-label>
+        <input matInput  [(ngModel)]="proveedor.provlugar" type="text" name="provlugar" placeholder="Lugar del proveedor">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>DIRECCIÓN</mat-label>
+        <input matInput  [(ngModel)]="proveedor.provdirec" type="text" name="provdirec" placeholder="Dirección">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>CORREO</mat-label>
+        <input matInput [(ngModel)]="proveedor.provemail" type="text" name="provemail" placeholder="Correo">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>TELEFONO</mat-label>
+        <input matInput [(ngModel)]="proveedor.provtelef" type="text" name="provtelef" placeholder="Fax">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>FAX</mat-label>
+        <input matInput [(ngModel)]="proveedor.provfax" type="text" name="provfax" placeholder="Fax">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>ESTADO</mat-label>
+        <input matInput [(ngModel)]="proveedor.provestado" type="text" name="provestado" placeholder="estado">
+    </mat-form-field>
+
+
+    <mat-form-field class="form">
+        <mat-label>TIPO</mat-label>
+        <input matInput [(ngModel)]="proveedor.provtipo" type="text" name="provtipo" placeholder="Tipo">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>URL</mat-label>
+        <input matInput [(ngModel)]="proveedor.provurl" type="text" name="provurl" placeholder="Sitio web">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Logs</mat-label>
+        <input matInput  [(ngModel)]="proveedor.ctrllog" type="text" name="ctrllog" placeholder="Logs">
+    </mat-form-field>
+
+    <div class="buttons">
+        <button (click)="create()" class="mat-elevation-z8" mat-stroked-button color="primary"> REGISTRAR  </button>
+        <button (click)="cancel()" class="mat-elevation-z8" mat-stroked-button color="warn"> CANCELAR </button>
+    </div>
+</form>

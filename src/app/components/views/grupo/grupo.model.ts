@@ -1,0 +1,2 @@
+export interface Grupo.Model {
+}

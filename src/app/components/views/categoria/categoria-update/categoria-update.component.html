@@ -1,0 +1,47 @@
+<form>
+    <h1>ATUALIZANDO CATEGORIA</h1>
+
+    <mat-form-field class="form">
+        <mat-label>Código</mat-label>
+        <input matInput [(ngModel)]="categoria.catcod" type="text" name="catcod" placeholder="Código">
+    </mat-form-field>
+    <mat-form-field class="form">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput [(ngModel)]="categoria.catdescrip" type="text" name="catdescrip" placeholder="descripción"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Categoria</mat-label>
+        <input matInput [(ngModel)]="categoria.categ" type="text" name="categ" placeholder="Categoria">
+    </mat-form-field>
+    <mat-form-field class="form">
+        <mat-label>Estado</mat-label>
+        <input matInput [(ngModel)]="categoria.catestado" type="text" name="catestado" placeholder="Estado">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Linea</mat-label>
+        <input matInput [(ngModel)]="categoria.catlinea" type="text" name="catlinea" placeholder="Línea">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Precio Unitario</mat-label>
+        <input matInput [(ngModel)]="categoria.catpreciounit" type="text" name="catpreciounit" placeholder="Precio Unitario">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Sublinea</mat-label>
+        <input matInput [(ngModel)]="categoria.catsublinea" type="text" name="catsublinea" placeholder="Sublinea">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Unidad</mat-label>
+        <input matInput [(ngModel)]="categoria.catunidad" type="text" name="catunidad" placeholder="Unidad">
+    </mat-form-field>
+
+    <div class="buttons">
+        <button (click)="update()" class="mat-elevation-z8" mat-stroked-button color="primary"> ACTUALIZAR </button>
+        <button (click)="cancel()" class="mat-elevation-z8" mat-stroked-button color="warn"> CANCELAR </button>
+    </div>
+
+</form>

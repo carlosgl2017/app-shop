@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080/vent'
+  baseUrl: 'http://localhost:8080'
 };
 
 /*

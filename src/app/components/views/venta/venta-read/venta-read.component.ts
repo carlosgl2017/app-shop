@@ -27,5 +27,4 @@ export class VentaReadComponent implements OnInit {
   navegarParaVentaCreate() {
     this.router.navigate(["ventas/create"])
   }
-
 }

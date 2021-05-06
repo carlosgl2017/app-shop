@@ -1,0 +1,2 @@
+export interface Adquisicion.Model {
+}

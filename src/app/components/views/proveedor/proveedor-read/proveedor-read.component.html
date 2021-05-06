@@ -1,0 +1,122 @@
+<div class="content">
+  <div class="title">
+    <h1>Proveedores</h1>
+  </div>
+  <button
+    class="mat-elevation-z8"
+    (click)="navegarParaProveedorCreate()"
+    mat-raised-button
+    color="primary"
+  >
+    <i class="material-icons">how_to_reg</i>
+    Registrar Proveedores
+  </button>
+
+  <div class="mat-elevation-z8 content table">
+    <table class="table" mat-table [dataSource]="proveedores">
+      <ng-container matColumnDef="provid">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let row">{{ row.provid }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provempresa">
+        <th mat-header-cell *matHeaderCellDef>PROVEEDOR EMPRESA</th>
+        <td mat-cell *matCellDef="let row">{{ row.provempresa }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provnombre">
+        <th mat-header-cell *matHeaderCellDef>NOMBRE DEL PROVEEDOR</th>
+        <td mat-cell *matCellDef="let row">{{ row.provnombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provmaterno">
+        <th mat-header-cell *matHeaderCellDef>APELLIDO PATERNO</th>
+        <td mat-cell *matCellDef="let row">{{ row.provmaterno }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provpaterno">
+        <th mat-header-cell *matHeaderCellDef>APELLIDO MATERNOE</th>
+        <td mat-cell *matCellDef="let row">{{ row.provpaterno }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provcinit">
+        <th mat-header-cell *matHeaderCellDef>NIT/CI</th>
+        <td mat-cell *matCellDef="let row">{{ row.provcinit }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provdepto">
+        <th mat-header-cell *matHeaderCellDef>DEPARTAMENTO</th>
+        <td mat-cell *matCellDef="let row">{{ row.provdepto }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provlugar">
+        <th mat-header-cell *matHeaderCellDef>LUGAR</th>
+        <td mat-cell *matCellDef="let row">{{ row.provlugar }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provdirec">
+        <th mat-header-cell *matHeaderCellDef>DIRECCIÓN</th>
+        <td mat-cell *matCellDef="let row">{{ row.provdirec }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provemail">
+        <th mat-header-cell *matHeaderCellDef>CORREO</th>
+        <td mat-cell *matCellDef="let row">{{ row.provemail }}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="provtelef">
+        <th mat-header-cell *matHeaderCellDef>TELEFONO</th>
+        <td mat-cell *matCellDef="let row">{{ row.provtelef }}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="provestado">
+        <th mat-header-cell *matHeaderCellDef>ESTADO</th>
+        <td mat-cell *matCellDef="let row">{{ row.provestado }}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="provtipo">
+        <th mat-header-cell *matHeaderCellDef>TIPO</th>
+        <td mat-cell *matCellDef="let row">{{ row.provtipo }}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="provurl">
+        <th mat-header-cell *matHeaderCellDef>URL</th>
+        <td mat-cell *matCellDef="let row">{{ row.provurl }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="provfax">
+        <th mat-header-cell *matHeaderCellDef>FAX</th>
+        <td mat-cell *matCellDef="let row">{{ row.provfax }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ctrllog">
+        <th mat-header-cell *matHeaderCellDef>LOGS</th>
+        <td mat-cell *matCellDef="let row">{{ row.ctrllog }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="proveedores">
+        <th mat-header-cell *matHeaderCellDef>VENTAS</th>
+        <td mat-cell *matCellDef="let row">
+          <a class="proveedores" routerLink="{{ row.provid }}">
+            <i class="material-icons">shop</i>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th class="mat-header" mat-header-cell *matHeaderCellDef>ACCIONES</th>
+        <td mat-cell *matCellDef="let row">
+          <a class="edit" routerLink="update/{{ row.venid }}">
+            <i class="material-icons">edit</i>
+          </a>
+          <a class="delete" routerLink="delete/{{ row.venid }}" href="">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
