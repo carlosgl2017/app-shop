@@ -1,1 +1,79 @@
-<p>concepto-create works!</p>
+<form>
+  <h1>CREAR NUEVO CONCEPTO</h1>
+
+  <mat-form-field class="form">
+    <mat-label>Código Concepto</mat-label>
+    <input
+      matInput
+      [(ngModel)]="concepto.conid"
+      type="text"
+      name="conid"
+      placeholder="Código de concepto"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-label>Código</mat-label>
+    <input
+      matInput
+      [(ngModel)]="concepto.gruid"
+      type="text"
+      name="gruid"
+      placeholder="Código de grupo"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-label>Descripción</mat-label>
+    <textarea
+      matInput
+      [(ngModel)]="concepto.condescrip"
+      type="text"
+      name="condescrip"
+      placeholder="Descripción"
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-label>Abreviatura</mat-label>
+    <input
+      matInput
+      [(ngModel)]="concepto.conabrev"
+      type="text"
+      name="conabrev"
+      placeholder="Abreviatura"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-label>Valor</mat-label>
+    <input
+      matInput
+      [(ngModel)]="concepto.conval"
+      type="text"
+      name="conval"
+      placeholder="Valor"
+    />
+  </mat-form-field>
+
+  <div class="buttons">
+    <button
+      (click)="create()"
+      class="mat-elevation-z8"
+      mat-stroked-button
+      color="primary"
+    >
+      Guardar
+    </button>
+    <button
+      (click)="cancel()"
+      class="mat-elevation-z8"
+      mat-stroked-button
+      color="warn"
+    >
+      Cancelar
+    </button>
+  </div>
+</form>

@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Concepto } from "../concepto/concepto.model";
 import { Categoria } from "./categoria";
 
 @Injectable({
@@ -22,7 +21,6 @@ export class CategoriaService {
     const url = `${this.baseUrl}/cat/add`;
     return this.http.post<Categoria>(url, categoria);
   }
-
   mensagem(str: String): void {
     this._snack.open(`${str}`, "OK", {
       horizontalPosition: "end",

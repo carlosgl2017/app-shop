@@ -4,4 +4,5 @@ export interface Concepto {
     condescrip: String;
     conval: String;
     gruid: String;
+    ctrllog: String;
 }

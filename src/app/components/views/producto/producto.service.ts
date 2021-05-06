@@ -20,17 +20,22 @@ export class ProductoService {
   ) {}
 
   //login
- /*  private isNoAutorizado(e): boolean {
+  private isNoAutorizado(e): boolean {
     if (e.status == 401 || e.status == 403) {
       this.router.navigate(["/login"]);
       return true;
     }
     return false;
-  } */
+  } 
 
  findAll(): Observable<Producto[]> {
     const url = `${this.baseUrl}/prod/sel`;
-    return this.http.get<Producto[]>(url);
+    return this.http.get<Producto[]>(url).pipe(
+      catchError(e=>{
+        this.isNoAutorizado(e);
+        return throwError(e);
+      })
+    );
   } 
   //obtener categorias
   findAllCategorias(): Observable<Categoria[]> {

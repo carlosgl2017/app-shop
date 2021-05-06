@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Concepto } from '../../concepto/concepto.model';
+import { Concepto } from '../../concepto/concepto';
 import { ConceptoService } from '../../concepto/concepto.service';
 import { Categoria } from '../categoria';
 import { CategoriaService } from '../categoria.service';
