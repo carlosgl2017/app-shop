@@ -4,6 +4,14 @@ import { CategoriaCreateComponent } from './components/views/categoria/categoria
 import { CategoriaDeleteComponent } from './components/views/categoria/categoria-delete/categoria-delete.component';
 import { CategoriaReadComponent } from './components/views/categoria/categoria-read/categoria-read.component';
 import { CategoriaUpdateComponent } from './components/views/categoria/categoria-update/categoria-update.component';
+import { ConceptoCreateComponent } from './components/views/concepto/concepto-create/concepto-create.component';
+import { ConceptoDeleteComponent } from './components/views/concepto/concepto-delete/concepto-delete.component';
+import { ConceptoReadComponent } from './components/views/concepto/concepto-read/concepto-read.component';
+import { ConceptoUpdateComponent } from './components/views/concepto/concepto-update/concepto-update.component';
+import { GrupoCreateComponent } from './components/views/grupo/grupo-create/grupo-create.component';
+import { GrupoDeleteComponent } from './components/views/grupo/grupo-delete/grupo-delete.component';
+import { GrupoReadComponent } from './components/views/grupo/grupo-read/grupo-read.component';
+import { GrupoUpdateComponent } from './components/views/grupo/grupo-update/grupo-update.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { LoginComponent } from './components/views/login/login.component';
 import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
@@ -24,6 +32,18 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   },
+   //gruposp
+   { path: 'grupos', component: GrupoReadComponent },
+   { path: 'grupos/create', component: GrupoCreateComponent },
+   { path: 'grupos/delete/:gruid', component: GrupoDeleteComponent },
+   { path: 'grupos/update/:gruid', component: GrupoUpdateComponent },
+   ////////////////////////////////////////////////
+   //concepto
+   { path: 'conceptos', component: ConceptoReadComponent },
+   { path: 'conceptos/create', component: ConceptoCreateComponent },
+   { path: 'conceptos/delete/:conid', component: ConceptoDeleteComponent },
+   { path: 'conceptos/update/:conid', component: ConceptoUpdateComponent },
+   ////////////////////////////////////////////////
   {
     path: 'ventas',
     component: VentaReadComponent

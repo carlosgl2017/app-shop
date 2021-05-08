@@ -1,23 +1,52 @@
-
-<mat-card>
-
-    <form>
-        <h1>{{titulo}}</h1>
-    
-        <mat-form-field class="form">
-            <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="usuario.username" type="text" name="username" placeholder="Usuario" required autofocus>
-        </mat-form-field>
- 
-        <mat-form-field class="form">
-            <mat-label>Password</mat-label>
-            <input matInput [(ngModel)]="usuario.password" type="password" name="password" placeholder="Password" required>
-        </mat-form-field>     
-    
-        <div class="buttons">
-            <button (click)='login()' type="submit" class="mat-elevation-z8" mat-stroked-button color="primary"> Iniciar Sessión </button>            
-        </div>
-    
-    </form>
-    
-</mat-card>
+<div class="login-page">
+    <mat-card class="mat-elevation-z12">
+      <mat-card-title style="text-align:center;">Iniciar Sesión</mat-card-title>
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+        <mat-tab label="App-shop">
+            <mat-card-content>
+              <form action="">
+                <mat-form-field>
+                  <input
+                    matInput [(ngModel)]="usuario.username"                    
+                    placeholder="usuario"
+                    required
+                    name="username"
+                    type="text">                    
+                  <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+                <mat-form-field>
+                  <input
+                    matInput [(ngModel)]="usuario.password"
+                    placeholder="Password"
+                    type="password"
+                    required
+                    minlength="6"
+                    name="password"
+                    ngModel
+                    #password="ngModel">
+                    <mat-error
+                      *ngIf="password.errors && password.errors.required">
+                      Password is required
+                    </mat-error>
+                    <mat-error
+                      *ngIf="password.errors && password.errors.minlength">
+                      Password must be of length 6
+                    </mat-error>
+                  <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
+                <mat-checkbox>Recordarme!</mat-checkbox>
+                <button 
+                 (click)='login()'
+                  mat-raised-button
+                  color="primary"
+                  class="login-button">
+                  Iniciar Sesión
+                </button> 
+               
+              </form>
+            </mat-card-content>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+  

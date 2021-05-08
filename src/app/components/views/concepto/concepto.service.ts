@@ -43,8 +43,7 @@ export class ConceptoService {
   delete(id: String): Observable<void> {
     const url = `${this.baseUrl}/con/del/${id}`
     return this.http.delete<void>(url)
-  }
-  
+  }  
   update(concepto: Concepto): Observable<void> {
     const url = `${this.baseUrl}/con/upd/${concepto.conid}`
     return this.http.put<void>(url, concepto)
@@ -61,6 +60,11 @@ export class ConceptoService {
   }
   listarUnidades(): Observable<Concepto[]> {
     const url = `${this.baseUrl}/con/unidad`;
+    return this.http.get<Concepto[]>(url);
+  }
+
+  listarCategorias(): Observable<Concepto[]> {
+    const url = `${this.baseUrl}/con/categoria`;
     return this.http.get<Concepto[]>(url);
   }
 }

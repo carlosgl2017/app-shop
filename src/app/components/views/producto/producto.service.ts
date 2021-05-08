@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
@@ -7,22 +7,43 @@ import { environment } from "src/environments/environment";
 import { Categoria } from "../categoria/categoria";
 import { Producto } from "./producto.model";
 import { catchError } from 'rxjs/operators'
-
+import { AuthService } from "../usuarios/auth.service";
+import swal from 'sweetalert2';
 @Injectable({
   providedIn: "root",
 })
 export class ProductoService {
   baseUrl: String = environment.baseUrl;
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(
     private http: HttpClient,
     private _snack: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
+
+  private agregarAuthorizationHeader() {
+    let token = this.authService.token;
+    if (token != null) {
+      return this.httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+    return this.httpHeaders;
+  }
 
   //login
   private isNoAutorizado(e): boolean {
-    if (e.status == 401 || e.status == 403) {
-      this.router.navigate(["/login"]);
+    if (e.status == 401) {
+
+      if (this.authService.isAuthenticated()) {
+        this.authService.logout();
+      }
+      this.router.navigate(['/login']);
+      return true;
+    }
+
+    if (e.status == 403) {
+      swal.fire('Acceso denegado', `Hola ${this.authService.usuario.username} no tienes acceso a este recurso!`, 'warning');
+      this.router.navigate(['/productos']);
       return true;
     }
     return false;
@@ -30,7 +51,7 @@ export class ProductoService {
 
  findAll(): Observable<Producto[]> {
     const url = `${this.baseUrl}/prod/sel`;
-    return this.http.get<Producto[]>(url).pipe(
+    return this.http.get<Producto[]>(url,{headers:this.agregarAuthorizationHeader()}).pipe(
       catchError(e=>{
         this.isNoAutorizado(e);
         return throwError(e);

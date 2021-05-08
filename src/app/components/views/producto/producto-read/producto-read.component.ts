@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../usuarios/auth.service';
 import { Producto } from '../producto.model';
 import { ProductoService } from '../producto.service';
 
@@ -11,7 +12,11 @@ import { ProductoService } from '../producto.service';
 export class ProductoReadComponent implements OnInit {
   productos: Producto[] = [];
   displayedColumns: string[] = ["prodid", "catid", "proddescrip", "prodestado","prodprecioventa","acciones"];
-  constructor(private service: ProductoService, private router: Router) { }
+  constructor(
+    private service: ProductoService, 
+    private router: Router,
+    private authService:AuthService
+    ) { }
 
   ngOnInit(): void {
     this.findAll();

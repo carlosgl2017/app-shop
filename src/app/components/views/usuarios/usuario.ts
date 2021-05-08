@@ -1,9 +1,10 @@
 export class Usuario {
-    id: number | undefined;
-  username: string | undefined | undefined;
-  password: string | undefined;
-  nombre: string | undefined;
-  apellido: string | undefined;
-  email: string | undefined;
+  id: number;
+  username: string;
+  password: string;
+  nombre: string;
+  apellido: string;
+  email: string;
   roles: string[] = [];
 }
+

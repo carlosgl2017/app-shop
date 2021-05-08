@@ -1,10 +1,22 @@
 <mat-sidenav-container class="container">
-   <mat-sidenav mode="side" opened>
+   <mat-sidenav mode="side" opened *ngIf="authService.isAuthenticated()">
       <mat-nav-list>
          <a routerLink="" mat-list-item>
             <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
             Inicio
          </a>
+          <!--inclui al menu-->
+      <a routerLink="/grupos" mat-list-item>
+         <mat-icon aria-hidden="false">group_work</mat-icon>
+         Grupo
+       </a>
+ 
+       <a routerLink="/conceptos" mat-list-item>
+         <mat-icon aria-hidden="false">perm_data_setting</mat-icon>
+         Concepto
+       </a>
+ 
+       <!--inclui al menu-->
          <a routerLink="/ventas" mat-list-item>
             <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_bag</mat-icon>
             Ventas
@@ -25,7 +37,6 @@
       </mat-nav-list>
    </mat-sidenav>
    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-      
+      <router-outlet></router-outlet>      
    </mat-sidenav-content>
 </mat-sidenav-container>

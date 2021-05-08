@@ -25,12 +25,14 @@ export class CategoriaCreateComponent implements OnInit {
   lineas: Concepto[] = [];
   sublineas: Concepto[] = [];
   unidades: Concepto[] = [];
-  constructor(private service: CategoriaService,private service1: ConceptoService,private service2:ConceptoService,private service3:ConceptoService, private router: Router) { }
+  categorys: Concepto[] = [];
+  constructor(private service: CategoriaService,private service1: ConceptoService,private service2:ConceptoService,private service3:ConceptoService,private service4:ConceptoService, private router: Router) { }
 
   ngOnInit(): void {
     this.listarLineas();
     this.listarSubLineas();
     this.listarUnidades();
+    this.listarCategorias();
   }
 
   create(): void {
@@ -66,9 +68,15 @@ export class CategoriaCreateComponent implements OnInit {
 }
 
 listarUnidades() {
-  this.service2.listarUnidades().subscribe((respuesta) => {
+  this.service3.listarUnidades().subscribe((respuesta) => {
     console.log(respuesta);
     this.unidades = respuesta;
+  });
+}
+listarCategorias() {
+  this.service4.listarCategorias().subscribe((respuesta) => {
+    console.log(respuesta);
+    this.categorys = respuesta;
   });
 }
 

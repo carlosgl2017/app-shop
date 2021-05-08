@@ -1,1 +1,33 @@
-<p>grupo-update works!</p>
+<form>
+  <h1>ACTUALIZANDO GRUPO</h1>
+
+  <mat-form-field class="form">
+    <mat-label>Descripción</mat-label>
+    <textarea
+      matInput
+      [(ngModel)]="grupo.grudescrip"
+      type="text"
+      name="grudescrip"
+      placeholder="Descripción"
+    ></textarea>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button
+      (click)="update()"
+      class="mat-elevation-z8"
+      mat-stroked-button
+      color="primary"
+    >
+      ACTUALIZAR
+    </button>
+    <button
+      (click)="cancel()"
+      class="mat-elevation-z8"
+      mat-stroked-button
+      color="warn"
+    >
+      CANCELAR
+    </button>
+  </div>
+</form>

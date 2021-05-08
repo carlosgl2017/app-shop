@@ -9,9 +9,13 @@
         <mat-label>Descripción</mat-label>
         <textarea matInput [(ngModel)]="categoria.catdescrip" type="text" name="catdescrip" placeholder="Descripción"></textarea>
     </mat-form-field>
+
+
     <mat-form-field class="form">
-        <mat-label>Categoría</mat-label>
-        <input matInput [(ngModel)]="categoria.categ" type="text" name="categ" placeholder="Descripción">
+        <mat-label>Categoria</mat-label>
+        <mat-select name="categ" matInput [(ngModel)]="categoria.categ">           
+            <mat-option *ngFor="let cate of categorys" [value]="cate.condescrip">{{cate.condescrip}}</mat-option>
+        </mat-select>
     </mat-form-field>
 
     
