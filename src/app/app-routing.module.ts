@@ -14,6 +14,8 @@ import { GrupoReadComponent } from './components/views/grupo/grupo-read/grupo-re
 import { GrupoUpdateComponent } from './components/views/grupo/grupo-update/grupo-update.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { LoginComponent } from './components/views/login/login.component';
+import { AuthGuard } from './components/views/producto/guards/auth.guard';
+import { RoleGuard } from './components/views/producto/guards/role.guard';
 import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
 import { ProductoDeleteComponent } from './components/views/producto/producto-delete/producto-delete.component';
 import { ProductoReadComponent } from './components/views/producto/producto-read/producto-read.component';
@@ -86,15 +88,15 @@ const routes: Routes = [
   },
   {
     path: 'productos/delete/:prodid',
-    component: ProductoDeleteComponent
+    component: ProductoDeleteComponent,canActivate:[AuthGuard,RoleGuard], data: {role:'ROLE_ADMIN'}
   },
   {
     path: 'productos/create',
-    component: ProductoCreateComponent
+    component: ProductoCreateComponent,canActivate:[AuthGuard,RoleGuard], data: {role:'ROLE_ADMIN'}
   },
   {
     path: 'productos/update/:prodid',
-    component: ProductoUpdateComponent
+    component: ProductoUpdateComponent,canActivate:[AuthGuard,RoleGuard], data: {role:'ROLE_ADMIN'}
   },
 
   { path: 'proveedor', component: ProveedorReadComponent },
