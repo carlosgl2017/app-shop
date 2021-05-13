@@ -21,6 +21,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
@@ -66,6 +67,7 @@ import { ConceptoCreateComponent } from './components/views/concepto/concepto-cr
 import { ConceptoDeleteComponent } from './components/views/concepto/concepto-delete/concepto-delete.component';
 import { ConceptoReadComponent } from './components/views/concepto/concepto-read/concepto-read.component';
 import { ConceptoUpdateComponent } from './components/views/concepto/concepto-update/concepto-update.component';
+import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,7 +115,8 @@ import { ConceptoUpdateComponent } from './components/views/concepto/concepto-up
     ConceptoCreateComponent,
     ConceptoDeleteComponent,
     ConceptoReadComponent,
-    ConceptoUpdateComponent
+    ConceptoUpdateComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,
@@ -134,7 +137,8 @@ import { ConceptoUpdateComponent } from './components/views/concepto/concepto-up
     MatSelectModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableExporterModule
 
     
 

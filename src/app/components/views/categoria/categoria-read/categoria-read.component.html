@@ -4,11 +4,15 @@
         <h1>Categoria</h1>
     </div>
 
-    <button class="mat-elevation-z8" (click)="navegarParaCategoriaCreate()" mat-stroked-button color="primary"> NUEVA
-        CATEGORIA </button>
+    <div class="button-row">
+        <button class="mat-elevation-z2" (click)="navegarParaCategoriaCreate()" mat-stroked-button color="primary">
+        <mat-icon>note_add</mat-icon>NUEVA CATEGORIA</button>
+        &nbsp; &nbsp;<button  mat-stroked-button class="mat-elevation-z2" color="primary" (click)="exporter.exportTable('xlsx',{fileName:'lista categoria'})"> <mat-icon>cloud_download</mat-icon> xlsx</button>
+        &nbsp; &nbsp;<button  mat-stroked-button class="mat-elevation-z1" color="primary" (click)="exporter.exportTable('txt',{fileName:'lista categoria'})"><mat-icon>cloud_download</mat-icon> txt</button>
+      </div>
 
     <div class="mat-elevation-z8 content-table">
-        <table class="table" mat-table [dataSource]="categorias">
+        <table class="table" mat-table [dataSource]="categorias"  matTableExporter #exporter="matTableExporter">
 
             <ng-container matColumnDef="catid">
                 <th mat-header-cell *matHeaderCellDef>ID</th>

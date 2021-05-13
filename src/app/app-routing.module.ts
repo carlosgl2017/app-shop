@@ -14,6 +14,7 @@ import { GrupoReadComponent } from './components/views/grupo/grupo-read/grupo-re
 import { GrupoUpdateComponent } from './components/views/grupo/grupo-update/grupo-update.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { LoginComponent } from './components/views/login/login.component';
+import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
 import { AuthGuard } from './components/views/producto/guards/auth.guard';
 import { RoleGuard } from './components/views/producto/guards/role.guard';
 import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
@@ -97,6 +98,10 @@ const routes: Routes = [
   {
     path: 'productos/update/:prodid',
     component: ProductoUpdateComponent,canActivate:[AuthGuard,RoleGuard], data: {role:'ROLE_ADMIN'}
+  },
+  {
+    path: 'productos/ver/:prodid',
+    component: DetalleComponent
   },
 
   { path: 'proveedor', component: ProveedorReadComponent },

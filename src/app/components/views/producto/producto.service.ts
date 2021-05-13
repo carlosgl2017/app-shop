@@ -5,8 +5,8 @@ import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Categoria } from "../categoria/categoria";
-import { Producto } from "./producto.model";
-import { catchError } from 'rxjs/operators'
+import { Producto } from "./producto";
+import { catchError, map } from 'rxjs/operators'
 import { AuthService } from "../usuarios/auth.service";
 import swal from 'sweetalert2';
 @Injectable({
@@ -68,24 +68,72 @@ export class ProductoService {
 
   findById(id: String): Observable<Producto> {
     const url = `${this.baseUrl}/prod/sel/${id}`;
-    return this.http.get<Producto>(url);
+    return this.http.get<Producto>(url, { headers: this.agregarAuthorizationHeader() }).pipe(
+      catchError(e => {
+        if (this.isNoAutorizado(e)) {
+          return throwError(e);
+        }
+        this.router.navigate(['/productos']);
+        console.error(e.error.mensaje);
+        swal.fire('Error al editar', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
-
+ 
   delete(id: String): Observable<void> {
     const url = `${this.baseUrl}/prod/del/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<void>(url,{ headers: this.agregarAuthorizationHeader() }).pipe(
+      catchError(e => {
+        if (this.isNoAutorizado(e)) {
+          return throwError(e);
+        }
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    );
   }
+  
 
   create(producto: Producto): Observable<Producto> {
     const url = `${this.baseUrl}/prod/add`;
-    return this.http.post<Producto>(url, producto);
-  }
+    return this.http.post<Producto>(url, producto, { headers: this.agregarAuthorizationHeader() }).pipe(
+      map((response: any) => response.cliente as Producto),
+      catchError(e => {
+        if (this.isNoAutorizado(e)) {
+          return throwError(e);
+        }
 
+        if (e.status == 400) {
+          return throwError(e);
+        }
+
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    );
+  }
   update(producto: Producto): Observable<void> {
     const url = `${this.baseUrl}/prod/upd/${producto.prodid}`;
-    return this.http.put<void>(url, producto);
-  }
+    return this.http.put<void>(url, producto,{ headers: this.agregarAuthorizationHeader() }).pipe(
+      catchError(e => {
 
+        if (this.isNoAutorizado(e)) {
+          return throwError(e);
+        }
+
+        if (e.status == 400) {
+          return throwError(e);
+        }
+
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    );
+  }
   mensagem(str: String): void {
     this._snack.open(`${str}`, "OK", {
       horizontalPosition: "end",

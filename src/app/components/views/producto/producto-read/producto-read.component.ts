@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AuthService } from '../../usuarios/auth.service';
-import { Producto } from '../producto.model';
+import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { ProductoService } from '../producto.service';
 export class ProductoReadComponent implements OnInit {
   productos: Producto[] = [];
   displayedColumns: string[] = ["prodid", "catid", "proddescrip", "prodestado","prodprecioventa","acciones"];
+  dataSource = new MatTableDataSource(this.productos);
   constructor(
     private service: ProductoService, 
     private router: Router,
@@ -31,6 +33,11 @@ export class ProductoReadComponent implements OnInit {
 
   navegarParaProductoCreate() {
     this.router.navigate(["productos/create"])
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

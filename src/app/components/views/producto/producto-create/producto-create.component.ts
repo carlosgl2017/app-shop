@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Categoria } from '../../categoria/categoria';
 import { CategoriaService } from '../../categoria/categoria.service';
-import { Producto } from '../producto.model';
+import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
 
 @Component({

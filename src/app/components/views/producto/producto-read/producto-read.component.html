@@ -6,6 +6,11 @@
   
     <button class="mat-elevation-z8" (click)="navegarParaProductoCreate()" mat-stroked-button color="primary"> Registrar Producto </button>
   
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    
     <div class="mat-elevation-z8 content-table">
       <table class="table" mat-table [dataSource]="productos">
   
