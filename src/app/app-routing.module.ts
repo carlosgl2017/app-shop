@@ -100,7 +100,7 @@ const routes: Routes = [
     component: ProductoUpdateComponent,canActivate:[AuthGuard,RoleGuard], data: {role:'ROLE_ADMIN'}
   },
   {
-    path: 'productos/ver/:prodid',
+    path: 'productos/upload/:prodid',
     component: DetalleComponent
   },
 

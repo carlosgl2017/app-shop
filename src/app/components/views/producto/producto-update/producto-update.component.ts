@@ -16,6 +16,7 @@ export class ProductoUpdateComponent implements OnInit {
     proddescrip: "",
     prodestado: "",
     prodprecioventa: "",
+    prodimagtxt: "",
   };
 
   constructor(
@@ -35,6 +36,7 @@ export class ProductoUpdateComponent implements OnInit {
       this.producto.proddescrip = resposta.proddescrip;
       this.producto.prodestado = resposta.prodestado;
       this.producto.prodprecioventa = resposta.prodprecioventa;
+      this.producto.prodimagtxt = resposta.prodimagtxt;
     });
   }
 
@@ -46,10 +48,7 @@ export class ProductoUpdateComponent implements OnInit {
       this.service.mensagem('Verifique que todos los campos esten llenados!')
     });
   }
-
   cancel(): void {
     this.router.navigate(['productos'])
   }
-
-
 }

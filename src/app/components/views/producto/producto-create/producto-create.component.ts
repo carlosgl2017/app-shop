@@ -17,7 +17,8 @@ export class ProductoCreateComponent implements OnInit {
     catid: '',
     proddescrip: '',
     prodestado: '',
-    prodprecioventa: ''
+    prodprecioventa: '',
+    prodimagtxt:''
   }
   categorias: Categoria[] = [];
   constructor(private service: ProductoService,private servicio:CategoriaService, private router: Router) { }

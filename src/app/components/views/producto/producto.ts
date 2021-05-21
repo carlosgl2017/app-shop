@@ -4,4 +4,5 @@ export interface Producto {
     proddescrip: String;
     prodestado: String;
     prodprecioventa: String;
+    prodimagtxt: String;
 }

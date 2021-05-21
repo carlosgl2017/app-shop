@@ -141,4 +141,19 @@ export class ProductoService {
       duration: 3000,
     });
   }
+
+  subirFoto(archivo: File,prodid):Observable<Producto>{
+    let formData = new FormData();
+    formData.append("archivo",archivo);           
+    formData.append("prodid",prodid);    
+    return this.http.post(`${this.baseUrl}/prod/upload`,formData).pipe(
+      map((response:any)=>response.producto as Producto),
+      catchError(e=>{
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      }
+      )
+    );       
+  }
 }

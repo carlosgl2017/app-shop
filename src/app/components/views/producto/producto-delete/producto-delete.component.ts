@@ -14,7 +14,8 @@ export class ProductoDeleteComponent implements OnInit {
     catid: '',
     proddescrip: '',
     prodestado: '',
-    prodprecioventa: ''
+    prodprecioventa: '',
+    prodimagtxt: '',
   }
   constructor(private service: ProductoService, private route: ActivatedRoute, private router: Router) { }
 
@@ -29,6 +30,7 @@ export class ProductoDeleteComponent implements OnInit {
       this.producto.proddescrip = respuesta.proddescrip
       this.producto.prodestado = respuesta.prodestado
       this.producto.prodprecioventa = respuesta.prodprecioventa
+      this.producto.prodimagtxt = respuesta.prodimagtxt
     })
   }
 
