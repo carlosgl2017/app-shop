@@ -11,9 +11,11 @@ import { ProductoService } from '../producto.service';
   styleUrls: ['./producto-read.component.css']
 })
 export class ProductoReadComponent implements OnInit {
-  productos: Producto[] = [];
+  productos: Producto[] = []; 
   displayedColumns: string[] = ["prodid", "catid", "proddescrip", "prodestado","prodprecioventa","acciones"];
-  dataSource = new MatTableDataSource(this.productos);
+
+ 
+ 
   constructor(
     private service: ProductoService, 
     private router: Router,
@@ -21,7 +23,8 @@ export class ProductoReadComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.findAll();
+    this.findAll();  
+   
   }
 
   findAll() {
@@ -37,7 +40,7 @@ export class ProductoReadComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    //this.productos.filter= filterValue.trim().toLowerCase();
   }
 
 }
