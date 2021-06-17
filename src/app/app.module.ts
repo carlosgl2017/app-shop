@@ -22,31 +22,35 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './components/views/home/home.component';
-import { VentaReadComponent } from './components/views/venta/venta-read/venta-read.component';
+/* import { VentaReadComponent } from './components/views/venta/venta-read/venta-read.component';
 import { VentaCreateComponent } from './components/views/venta/venta-create/venta-create.component';
 import { VentaDeleteComponent } from './components/views/venta/venta-delete/venta-delete.component';
-import { VentaUpdateComponent } from './components/views/venta/venta-update/venta-update.component';
+import { VentaUpdateComponent } from './components/views/venta/venta-update/venta-update.component'; */
 import { CategoriaReadComponent } from './components/views/categoria/categoria-read/categoria-read.component';
 import { CategoriaCreateComponent } from './components/views/categoria/categoria-create/categoria-create.component';
 import { CategoriaDeleteComponent } from './components/views/categoria/categoria-delete/categoria-delete.component';
 import { CategoriaUpdateComponent } from './components/views/categoria/categoria-update/categoria-update.component';
 import { LoginComponent } from './components/views/login/login.component';
-import { ProveedorCreateComponent } from './components/views/proveedor/proveedor-create/proveedor-create.component';
+/* import { ProveedorCreateComponent } from './components/views/proveedor/proveedor-create/proveedor-create.component';
 import { ProveedorDeleteComponent } from './components/views/proveedor/proveedor-delete/proveedor-delete.component';
 import { ProveedorReadComponent } from './components/views/proveedor/proveedor-read/proveedor-read.component';
-import { ProveedorUpdateComponent } from './components/views/proveedor/proveedor-update/proveedor-update.component';
-import { AdquisicionCreateComponent } from './components/views/adquisicion/adquisicion-create/adquisicion-create.component';
+import { ProveedorUpdateComponent } from './components/views/proveedor/proveedor-update/proveedor-update.component'; */
+/* import { AdquisicionCreateComponent } from './components/views/adquisicion/adquisicion-create/adquisicion-create.component';
 import { AdquisicionDeleteComponent } from './components/views/adquisicion/adquisicion-delete/adquisicion-delete.component';
 import { AdquisicionReadComponent } from './components/views/adquisicion/adquisicion-read/adquisicion-read.component';
-import { AdquisicionUpdateComponent } from './components/views/adquisicion/adquisicion-update/adquisicion-update.component';
-import { ComprasCreateComponent } from './components/views/compras/compras-create/compras-create.component';
-import { ComprasDeleteComponent } from './components/views/compras/compras-delete/compras-delete.component';
-import { ComprasReadComponent } from './components/views/compras/compras-read/compras-read.component';
-import { ComprasUpdateComponent } from './components/views/compras/compras-update/compras-update.component';
+import { AdquisicionUpdateComponent } from './components/views/adquisicion/adquisicion-update/adquisicion-update.component'; */
+
 import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
 import { ProductoDeleteComponent } from './components/views/producto/producto-delete/producto-delete.component';
 import { ProductoReadComponent } from './components/views/producto/producto-read/producto-read.component';
@@ -68,6 +72,20 @@ import { ConceptoDeleteComponent } from './components/views/concepto/concepto-de
 import { ConceptoReadComponent } from './components/views/concepto/concepto-read/concepto-read.component';
 import { ConceptoUpdateComponent } from './components/views/concepto/concepto-update/concepto-update.component';
 import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
+//-------------pdf dependencies
+// Import pdfmake-wrapper and the fonts to use
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "pdfmake/build/vfs_fonts";
+import { AddEditAdquisicionComponent } from './components/views/adquisicion/add-edit-adquisicion/add-edit-adquisicion.component';
+import { ListAdquisicionComponent } from './components/views/adquisicion/list-adquisicion/list-adquisicion.component';
+import { MensajeConfirmacionComponent } from './components/shared/mensaje-confirmacion/mensaje-confirmacion.component';
+import { AddEditCompraComponent } from './components/views/compra/add-edit-compra/add-edit-compra.component';
+import { AddEditProveedorComponent } from './components/views/proveedor/add-edit-proveedor/add-edit-proveedor.component';
+import { ListProveedorComponent } from './components/views/proveedor/list-proveedor/list-proveedor.component'; // fonts provided for pdfmake
+
+// Set the fonts to use
+PdfMakeWrapper.setFonts(pdfFonts);
+//-----------ends
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,27 +93,23 @@ import { DetalleComponent } from './components/views/producto/detalle/detalle.co
     FooterComponent,
     NavComponent,
     HomeComponent,
-    VentaReadComponent,
+ /*    VentaReadComponent,
     VentaCreateComponent,
     VentaDeleteComponent,
-    VentaUpdateComponent,
+    VentaUpdateComponent, */
     CategoriaReadComponent,
     CategoriaCreateComponent,
     CategoriaDeleteComponent,
     CategoriaUpdateComponent,
     LoginComponent,
-    ProveedorCreateComponent,
+   /*  ProveedorCreateComponent,
     ProveedorDeleteComponent,
     ProveedorReadComponent,
-    ProveedorUpdateComponent,
-    AdquisicionCreateComponent,
+    ProveedorUpdateComponent, */
+    /* AdquisicionCreateComponent,
     AdquisicionDeleteComponent,
     AdquisicionReadComponent,
-    AdquisicionUpdateComponent,
-    ComprasCreateComponent,
-    ComprasDeleteComponent,
-    ComprasReadComponent,
-    ComprasUpdateComponent,
+    AdquisicionUpdateComponent, */
     ProductoCreateComponent,
     ProductoDeleteComponent,
     ProductoReadComponent,
@@ -116,7 +130,13 @@ import { DetalleComponent } from './components/views/producto/detalle/detalle.co
     ConceptoDeleteComponent,
     ConceptoReadComponent,
     ConceptoUpdateComponent,
-    DetalleComponent
+    DetalleComponent,
+    AddEditAdquisicionComponent,
+    ListAdquisicionComponent,
+    MensajeConfirmacionComponent,
+    AddEditCompraComponent,
+    AddEditProveedorComponent,
+    ListProveedorComponent,
   ],
   imports: [
     BrowserModule,
@@ -138,12 +158,15 @@ import { DetalleComponent } from './components/views/producto/detalle/detalle.co
     ReactiveFormsModule,
     MatTabsModule,
     MatCheckboxModule,
-    MatTableExporterModule
-
-    
-
-
-    
+    MatTableExporterModule,
+    MatStepperModule,
+    MatGridListModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

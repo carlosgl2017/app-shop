@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEditAdquisicionComponent } from './components/views/adquisicion/add-edit-adquisicion/add-edit-adquisicion.component';
+import { ListAdquisicionComponent } from './components/views/adquisicion/list-adquisicion/list-adquisicion.component';
+/* import { AdquisicionCreateComponent } from './components/views/adquisicion/adquisicion-create/adquisicion-create.component';
+import { AdquisicionDeleteComponent } from './components/views/adquisicion/adquisicion-delete/adquisicion-delete.component';
+import { AdquisicionReadComponent } from './components/views/adquisicion/adquisicion-read/adquisicion-read.component';
+import { AdquisicionUpdateComponent } from './components/views/adquisicion/adquisicion-update/adquisicion-update.component'; */
 import { CategoriaCreateComponent } from './components/views/categoria/categoria-create/categoria-create.component';
 import { CategoriaDeleteComponent } from './components/views/categoria/categoria-delete/categoria-delete.component';
 import { CategoriaReadComponent } from './components/views/categoria/categoria-read/categoria-read.component';
 import { CategoriaUpdateComponent } from './components/views/categoria/categoria-update/categoria-update.component';
+import { AddEditCompraComponent } from './components/views/compra/add-edit-compra/add-edit-compra.component';
 import { ConceptoCreateComponent } from './components/views/concepto/concepto-create/concepto-create.component';
 import { ConceptoDeleteComponent } from './components/views/concepto/concepto-delete/concepto-delete.component';
 import { ConceptoReadComponent } from './components/views/concepto/concepto-read/concepto-read.component';
@@ -21,14 +28,16 @@ import { ProductoCreateComponent } from './components/views/producto/producto-cr
 import { ProductoDeleteComponent } from './components/views/producto/producto-delete/producto-delete.component';
 import { ProductoReadComponent } from './components/views/producto/producto-read/producto-read.component';
 import { ProductoUpdateComponent } from './components/views/producto/producto-update/producto-update.component';
-import { ProveedorCreateComponent } from './components/views/proveedor/proveedor-create/proveedor-create.component';
+import { AddEditProveedorComponent } from './components/views/proveedor/add-edit-proveedor/add-edit-proveedor.component';
+import { ListProveedorComponent } from './components/views/proveedor/list-proveedor/list-proveedor.component';
+/* import { ProveedorCreateComponent } from './components/views/proveedor/proveedor-create/proveedor-create.component';
 import { ProveedorDeleteComponent } from './components/views/proveedor/proveedor-delete/proveedor-delete.component';
 import { ProveedorReadComponent } from './components/views/proveedor/proveedor-read/proveedor-read.component';
-import { ProveedorUpdateComponent } from './components/views/proveedor/proveedor-update/proveedor-update.component';
-import { VentaCreateComponent } from './components/views/venta/venta-create/venta-create.component';
+import { ProveedorUpdateComponent } from './components/views/proveedor/proveedor-update/proveedor-update.component'; */
+/* import { VentaCreateComponent } from './components/views/venta/venta-create/venta-create.component';
 import { VentaDeleteComponent } from './components/views/venta/venta-delete/venta-delete.component';
 import { VentaReadComponent } from './components/views/venta/venta-read/venta-read.component';
-import { VentaUpdateComponent } from './components/views/venta/venta-update/venta-update.component';
+import { VentaUpdateComponent } from './components/views/venta/venta-update/venta-update.component'; */
 
 const routes: Routes = [
   {
@@ -47,7 +56,23 @@ const routes: Routes = [
    { path: 'conceptos/delete/:conid', component: ConceptoDeleteComponent },
    { path: 'conceptos/update/:conid', component: ConceptoUpdateComponent },
    ////////////////////////////////////////////////
-  {
+
+
+
+   //adquisicion
+   { path: 'adquisiciones', component: ListAdquisicionComponent },
+   { path: 'adquisiciones/create', component: AddEditAdquisicionComponent },
+   { path: 'adquisiciones/update/:adqid', component: AddEditAdquisicionComponent },
+
+   //compra
+   { path: 'compras', component: AddEditCompraComponent },
+   //Adquisicion
+/*    { path: 'adquisiciones', component: AdquisicionReadComponent },
+   { path: 'adquisiciones/create', component: AdquisicionCreateComponent },
+   { path: 'adquisiciones/delete/:adqid', component: AdquisicionDeleteComponent },
+   { path: 'adquisiciones/update/:adqid', component: AdquisicionUpdateComponent }, */
+   ////////////////////////////////////////////////
+ /*  {
     path: 'ventas',
     component: VentaReadComponent
   },
@@ -62,7 +87,7 @@ const routes: Routes = [
   {
     path: 'ventas/update/:venid',
     component: VentaUpdateComponent
-  },
+  }, */
   {
     path: 'categorias',
     component: CategoriaReadComponent
@@ -104,10 +129,15 @@ const routes: Routes = [
     component: DetalleComponent
   },
 
-  { path: 'proveedor', component: ProveedorReadComponent },
+  /* { path: 'proveedor', component: ProveedorReadComponent },
   { path: 'proveedor/create', component: ProveedorCreateComponent },
   { path: 'proveedor/delete/:provid', component: ProveedorDeleteComponent },
-  { path: 'proveedor/update/:provid', component: ProveedorUpdateComponent },
+  { path: 'proveedor/update/:provid', component: ProveedorUpdateComponent }, */
+
+  //adquisicion
+  { path: 'proveedores', component: ListProveedorComponent },
+  { path: 'proveedores/create', component: AddEditProveedorComponent },
+  { path: 'proveedores/update/:adqid', component: AddEditProveedorComponent },
 
 ];
 

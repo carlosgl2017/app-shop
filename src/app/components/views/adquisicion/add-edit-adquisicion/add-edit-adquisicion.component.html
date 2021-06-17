@@ -1,0 +1,226 @@
+<mat-card class="adquisicion mat-elevation-z4">
+  <mat-card-title class="title">{{accion}} Adquisición</mat-card-title>
+
+  <!-- <pre>{{myForm.value | json}}</pre> -->
+  <form [formGroup]="myForm">
+    <div class="row">
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Id</mat-label>
+          <input type="number" matInput formControlName="adqid"/>
+        </mat-form-field>
+        <div *ngIf="myForm.get('adqid').hasError('required') && myForm.get('adqid').touched" style="margin-top:-20px">
+          <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Código de control</mat-label>
+          <input matInput formControlName="adq_cod_control"/>
+        </mat-form-field>
+      </div>
+
+      
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Fecha de factura</mat-label>
+          <input type="date" matInput formControlName="adq_fec_fac_dui"/>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Nit</mat-label>
+          <input matInput formControlName="adq_nit_ci_prov" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Número de autorización</mat-label>
+          <input matInput formControlName="adq_nro_auto" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Número de Dui</mat-label>
+          <input matInput formControlName="adq_nro_dui" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Número de Factura</mat-label>
+          <input matInput formControlName="adq_nro_fact" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Razón Social</mat-label>
+          <input matInput formControlName="adq_razon_social" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Sub total</mat-label>
+          <input matInput formControlName="adq_subtotal" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Tipo de compra</mat-label>
+          <input matInput formControlName="adq_tipo_compra" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Total crédito fiscal</mat-label>
+          <input matInput formControlName="adq_total_cred_fiscal" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Total descuento al iva</mat-label>
+          <input matInput formControlName="adq_total_desc_bonif_rebaja_al_iva" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Total credito fiscal</mat-label>
+          <input matInput formControlName="adq_total_importe_base_cred_fiscal" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Total importe compra</mat-label>
+          <input matInput formControlName="adq_total_importe_compra" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Total no sujeto crédito fiscal</mat-label>
+          <input matInput formControlName="adq_total_no_sujeto_cred_fiscal" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Condición de pago</mat-label>
+          <input matInput formControlName="adqcondicpago" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Descripción</mat-label>
+          <input matInput formControlName="adqdescrip" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Distribuidor</mat-label>
+          <input matInput formControlName="adqdistribuidor" />
+        </mat-form-field>
+      </div>
+
+     
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Forma de Vencimiento</mat-label>
+          <input matInput formControlName="adqfec_vence" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Forma de Pago</mat-label>
+          <input matInput formControlName="adqformapago" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Nota de salida</mat-label>
+          <input matInput formControlName="adqnotasalida" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Nro de pedido</mat-label>
+          <input matInput formControlName="adqnro_pedido" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Observaciones</mat-label>
+          <input matInput formControlName="adqobservaciones" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Receptor</mat-label>
+          <input matInput formControlName="adqreceptor" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Ruta</mat-label>
+          <input matInput formControlName="adqruta" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Transporte</mat-label>
+          <input matInput formControlName="adqtrasnporte" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Proveedor</mat-label>
+          <input matInput formControlName="provid" />
+        </mat-form-field>
+      </div>
+
+      <br />
+      <div class="col-lg-12">
+        <button
+          class="btn btn-success btn-md float-right"
+          [disabled]="myForm.invalid"
+          type="button"
+          style="margin-left: 10px"
+         (click)="create()" 
+        >
+          Aceptar
+        </button>
+      
+        <button
+          class="btn btn-secondary btn-md float-right"
+          routerLink="/adquisiciones"
+          type="button"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</mat-card>
