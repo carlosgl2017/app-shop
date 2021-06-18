@@ -6,38 +6,25 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { MensajeConfirmacionComponent } from 'src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component';
-import { Proveedor } from '../proveedor';
-import { ProveedorService } from '../proveedor.service';
+import { Grupo } from '../grupo';
+import { GrupoService } from '../grupo.service';
 
 @Component({
-  selector: 'app-list-proveedor',
-  templateUrl: './list-proveedor.component.html',
-  styleUrls: ['./list-proveedor.component.css']
+  selector: 'app-list-grupo',
+  templateUrl: './list-grupo.component.html',
+  styleUrls: ['./list-grupo.component.css']
 })
-export class ListProveedorComponent implements OnInit {
-  proveedores: Proveedor[];
+export class ListGrupoComponent implements OnInit {
+  grupos: Grupo[];
   displayedColumns: string[] = [
-    "provid",
-    "provcinit",
-    "provdepto",
-    "provdirec",
-    "provemail",
-    "provempresa",
-    "provfax",
-    "provlugar",
-    "provmaterno",
-    "provnombre",
-    "provpaterno",
-    "provtelef",
-    "provtipo",
-    "provurl",
+    "grudescrip",
     "acciones",
   ];
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   constructor(
-    private service: ProveedorService,
+    private service: GrupoService,
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
@@ -54,9 +41,8 @@ export class ListProveedorComponent implements OnInit {
    //para cargar datos
    findAll() {
     this.service.findAll().subscribe((respuesta) => {
-      console.log(respuesta);
-      this.proveedores = respuesta;
-      this.dataSource = new MatTableDataSource(this.proveedores); //this added, for table
+      this.grupos = respuesta;
+      this.dataSource = new MatTableDataSource(this.grupos); //this added, for table
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
@@ -65,17 +51,17 @@ export class ListProveedorComponent implements OnInit {
   delete(index: number): void {
     const dialogRef = this.dialog.open(MensajeConfirmacionComponent, {
       width: "350px",
-      data: { mensaje: "Esta seguro que desea eliminar el proveedor" },
+      data: { mensaje: "Esta seguro que desea eliminar el Grupo" },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === "aceptar") {
         this.service.delete(index).subscribe(
           (respuesta) => {
-            this.router.navigate(["proveedores"]);
-            this.service.mensagem("proveedor  eliminado con éxito!");
+            this.router.navigate(["grupos"]);
+            this.service.mensagem("grupo  eliminado con éxito!");
             this.findAll();
-            this.snackBar.open("El proveedor fue eliminado con éxito", "", {
+            this.snackBar.open("El grupo fue eliminado con éxito", "", {
               duration: 3000,
             });
           },
@@ -86,8 +72,8 @@ export class ListProveedorComponent implements OnInit {
       }
     });
   }
-  navegarParaProveedorCreate() {
-    this.router.navigate(["proveedores/create"])
+  navegarParaGrupoCreate() {
+    this.router.navigate(["grupos/create"])
   }
 
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Categoria } from '../../categoria/categoria';
-import { CategoriaService } from '../../categoria/categoria.service';
+/* import { Categoria } from '../../categoria/categoria';
+import { CategoriaService } from '../../categoria/categoria.service'; */
 import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
 
@@ -20,18 +20,18 @@ export class ProductoCreateComponent implements OnInit {
     prodprecioventa: '',
     prodimagtxt:''
   }
-  categorias: Categoria[] = [];
-  constructor(private service: ProductoService,private servicio:CategoriaService, private router: Router) { }
+/*   categorias: Categoria[] = []; */
+  constructor(private service: ProductoService/* ,private servicio:CategoriaService */, private router: Router) { }
   ngOnInit(): void {
-    this.findAllCategorias();
+   /*  this.findAllCategorias(); */
   }
   //obtener categorias
-  findAllCategorias() {
+  /* findAllCategorias() {
     this.servicio.findAll().subscribe((respuesta) => {
       console.log(respuesta);
       this.categorias = respuesta;
     });
-  }
+  } */
   categoriaControl = new FormControl('', Validators.required);
   selectFormControl = new FormControl('', Validators.required);
 

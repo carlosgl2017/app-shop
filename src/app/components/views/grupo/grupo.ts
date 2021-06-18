@@ -1,4 +1,4 @@
 export interface Grupo {
-    gruid?: String;
-    grudescrip: String;
+    gruid?:number,
+    grudescrip: string
 }

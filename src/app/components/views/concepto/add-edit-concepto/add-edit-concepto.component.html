@@ -1,0 +1,60 @@
+<mat-card class="adquisicion mat-elevation-z4">
+    <mat-card-title class="title">{{accion}} Concepto</mat-card-title>
+  
+    <!-- <pre>{{myForm.value | json}}</pre> -->
+    <form [formGroup]="myForm">
+      <div class="row">
+  
+        <div class="col-md-3">
+          <mat-form-field class="axample-container">
+            <mat-label>Abreviación</mat-label>
+            <input type="text" matInput formControlName="conabrev"/>
+          </mat-form-field>         
+        </div>
+  
+        <div class="col-md-3">
+          <mat-form-field class="axample-container">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="condescrip"/>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+            <mat-form-field class="axample-container">
+              <mat-label>Valor</mat-label>
+              <input matInput formControlName="conval"/>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-3">
+            <mat-form-field class="axample-container">
+              <mat-label>Grupo</mat-label>
+              <input matInput formControlName="gruid"/>
+            </mat-form-field>
+          </div>
+          
+  
+        <br />
+        <div class="col-lg-12">
+          <button
+            class="btn btn-success btn-md float-right"
+            [disabled]="myForm.invalid"
+            type="button"
+            style="margin-left: 10px"
+           (click)="create()" 
+          >
+            Aceptar
+          </button>
+        
+          <button
+            class="btn btn-secondary btn-md float-right"
+            routerLink="/conceptos"
+            type="button"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+

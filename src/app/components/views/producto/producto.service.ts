@@ -4,7 +4,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Categoria } from "../categoria/categoria";
+/* import { Categoria } from "../categoria/categoria"; */
 import { Producto } from "./producto";
 import { catchError, map } from 'rxjs/operators'
 import { AuthService } from "../usuarios/auth.service";
@@ -59,10 +59,10 @@ export class ProductoService {
     );
   } 
   //obtener categorias
-  findAllCategorias(): Observable<Categoria[]> {
+/*   findAllCategorias(): Observable<Categoria[]> {
     const url = `${this.baseUrl}/cat/sel`;
     return this.http.get<Categoria[]>(url);
-  }
+  } */
 
   //
 

@@ -1,8 +1,8 @@
 export interface Concepto {
-    conid?: String;
-    conabrev: String;
-    condescrip: String;
-    conval: String;
-    gruid: String;
-    ctrllog: String;
+  conid?: number;
+  conabrev: string;
+  condescrip: string;
+  conval: number;
+  ctrllog: string;
+  gruid: number;
 }
