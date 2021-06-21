@@ -39,12 +39,7 @@ export class AdquisicionService {
     return this.http.delete<void>(url);
   }
   update(adquisicion: Adquisicion): Observable<void> {
-    console.log('llego aqui');
     const url = `${this.baseUrl}/adq/upd/${adquisicion.adqid}`;
     return this.http.put<void>(url, adquisicion);
-  }
-
-
-
-  
+  } 
 }

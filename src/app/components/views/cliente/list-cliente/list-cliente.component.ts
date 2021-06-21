@@ -6,26 +6,36 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { MensajeConfirmacionComponent } from 'src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component';
-import { Grupo } from '../grupo';
-import { GrupoService } from '../grupo.service';
+import { Cliente } from '../cliente';
+import { ClienteService } from '../cliente.service';
 
 @Component({
-  selector: 'app-list-grupo',
-  templateUrl: './list-grupo.component.html',
-  styleUrls: ['./list-grupo.component.css']
+  selector: 'app-list-cliente',
+  templateUrl: './list-cliente.component.html',
+  styleUrls: ['./list-cliente.component.css']
 })
-export class ListGrupoComponent implements OnInit {
-  grupos: Grupo[];
+export class ListClienteComponent implements OnInit {
+
+  clientes: Cliente[];
   displayedColumns: string[] = [
-    "gruid",
-    "grudescrip",
+    "cliid",
+    "apellidos",
+    "direccion",
+    "email",
+    "fecha_nacimiento",
+    "nombre",
+    "numero_doc",
+    "sexo",
+    "telefono",
+    "tipo_documento",
     "acciones",
   ];
+
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   constructor(
-    private service: GrupoService,
+    private service: ClienteService,
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
@@ -42,8 +52,9 @@ export class ListGrupoComponent implements OnInit {
    //para cargar datos
    findAll() {
     this.service.findAll().subscribe((respuesta) => {
-      this.grupos = respuesta;
-      this.dataSource = new MatTableDataSource(this.grupos); //this added, for table
+      console.log(respuesta);
+      this.clientes = respuesta;
+      this.dataSource = new MatTableDataSource(this.clientes); //this added, for table
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
@@ -52,17 +63,17 @@ export class ListGrupoComponent implements OnInit {
   delete(index: number): void {
     const dialogRef = this.dialog.open(MensajeConfirmacionComponent, {
       width: "350px",
-      data: { mensaje: "Esta seguro que desea eliminar el Grupo" },
+      data: { mensaje: "Esta seguro que desea eliminar el cliente" },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === "aceptar") {
         this.service.delete(index).subscribe(
           (respuesta) => {
-            this.router.navigate(["grupos"]);
-            this.service.mensagem("grupo  eliminado con éxito!");
+            this.router.navigate(["clientes"]);
+            this.service.mensagem("cliente eliminado con éxito!");
             this.findAll();
-            this.snackBar.open("El grupo fue eliminado con éxito", "", {
+            this.snackBar.open("El cliente fue eliminado con éxito", "", {
               duration: 3000,
             });
           },
@@ -73,8 +84,8 @@ export class ListGrupoComponent implements OnInit {
       }
     });
   }
-  navegarParaGrupoCreate() {
-    this.router.navigate(["grupos/create"])
+  navegarParaClienteCreate() {
+    this.router.navigate(["clientes/create"])
   }
 
 }

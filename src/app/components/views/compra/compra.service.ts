@@ -30,16 +30,16 @@ export class CompraService {
   }
 
   findById(id: Number): Observable<Compra> {
-    const url = `${this.baseUrl}/adq/sel/${id}`;
+    const url = `${this.baseUrl}/comp/sel/${id}`;
     return this.http.get<Compra>(url);
   }
 
   delete(id: Number): Observable<void> {
-    const url = `${this.baseUrl}/adq/del/${id}`;
+    const url = `${this.baseUrl}/comp/del/${id}`;
     return this.http.delete<void>(url);
   }
-  update(adquisicion: Compra): Observable<void> {
-    const url = `${this.baseUrl}/adq/upd/${adquisicion.adqid}`;
-    return this.http.put<void>(url, adquisicion);
+  update(compra: Compra): Observable<void> {
+    const url = `${this.baseUrl}/comp/upd/${compra.compid}`;
+    return this.http.put<void>(url, compra);
   }
 }

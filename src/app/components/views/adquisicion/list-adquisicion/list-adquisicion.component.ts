@@ -51,7 +51,7 @@ export class ListAdquisicionComponent implements OnInit {
     this.service.findAll().subscribe((respuesta) => {
       console.log(respuesta);
       this.adquisiciones = respuesta;
-      this.dataSource = new MatTableDataSource(this.adquisiciones); //this added, for table
+      this.dataSource = new MatTableDataSource(this.adquisiciones); //this added, for table      
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });

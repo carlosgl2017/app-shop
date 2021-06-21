@@ -11,7 +11,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input autocomplete="off">
     </mat-form-field>
     
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort> 
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="provid" matSortDirection="asc"> 
     
       <!-- Position Column -->
       <ng-container matColumnDef="provid">
@@ -107,9 +107,10 @@
             <i class="material-icons">delete</i>
           </a>
     
-          <a  class="pointer" routerLink="/compras"  >
-            <i class="material-icons">add_circle_outline</i>
+          <a  class="pointer" routerLink="/proveedores/show"  >
+            <i class="material-icons">visibility</i>
           </a>
+          
         </td>
       </ng-container>
     

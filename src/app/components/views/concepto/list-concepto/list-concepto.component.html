@@ -23,7 +23,7 @@
     />
   </mat-form-field>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSort matSortActive="conid" matSortDirection="asc">
     <!-- Position Column -->
     <ng-container matColumnDef="conid">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>

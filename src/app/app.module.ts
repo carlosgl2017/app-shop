@@ -63,7 +63,9 @@ import { ListGrupoComponent } from './components/views/grupo/list-grupo/list-gru
 import { AddEditConceptoComponent } from './components/views/concepto/add-edit-concepto/add-edit-concepto.component';
 import { ListConceptoComponent } from './components/views/concepto/list-concepto/list-concepto.component';
 import { AddEditPruebareporteComponent } from './components/views/reporte/add-edit-pruebareporte/add-edit-pruebareporte.component';
-import { ListReporteComponent } from './components/views/reporte/list-reporte/list-reporte.component'; // fonts provided for pdfmake
+import { ListReporteComponent } from './components/views/reporte/list-reporte/list-reporte.component';
+import { AddEditClienteComponent } from './components/views/cliente/add-edit-cliente/add-edit-cliente.component';
+import { ListClienteComponent } from './components/views/cliente/list-cliente/list-cliente.component'; // fonts provided for pdfmake
 
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -101,6 +103,8 @@ PdfMakeWrapper.setFonts(pdfFonts);
     ListConceptoComponent,
     AddEditPruebareporteComponent,
     ListReporteComponent,
+    AddEditClienteComponent,
+    ListClienteComponent,
   ],
   imports: [
     BrowserModule,

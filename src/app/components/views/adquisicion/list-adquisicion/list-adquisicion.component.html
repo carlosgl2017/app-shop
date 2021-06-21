@@ -11,7 +11,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input autocomplete="off">
   </mat-form-field>
   
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort> 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="adqid" matSortDirection="asc"> 
   
     <!-- Position Column -->
     <ng-container matColumnDef="adqid">

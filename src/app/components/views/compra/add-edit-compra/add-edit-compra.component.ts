@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
@@ -7,7 +7,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { Router } from "@angular/router";
 import { MensajeConfirmacionComponent } from "src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component";
-import { AdquisicionService } from "../../adquisicion/adquisicion.service";
+
 import { Compra } from "../compra";
 import { CompraService } from "../compra.service";
 
@@ -17,6 +17,10 @@ import { CompraService } from "../compra.service";
   styleUrls: ["./add-edit-compra.component.css"],
 })
 export class AddEditCompraComponent implements OnInit {
+  //para editar
+  compid: any;
+  accion = "Crear";
+  //para editar
   compras: Compra[];
   displayedColumns: string[] = [
     "compid",
@@ -65,6 +69,10 @@ export class AddEditCompraComponent implements OnInit {
 
   ngOnInit(): void {
     this.findAll();
+    if (this.compid!== undefined) {
+      this.accion = "Editar";
+      this.esEditar();
+    }
   }
 
   applyFilter(event: Event) {
@@ -92,9 +100,8 @@ export class AddEditCompraComponent implements OnInit {
       if (result === "aceptar") {
         this.service.delete(index).subscribe(
           (respuesta) => {
-            this.router.navigate(["compras"]);
-            this.service.mensagem("compra  eliminada con éxito!");
             this.findAll();
+            this.service.mensagem("compra  eliminada con éxito!");       
             this.snackBar.open("Compra  fue eliminado con éxito", "", {
               duration: 3000,
             });
@@ -134,7 +141,7 @@ export class AddEditCompraComponent implements OnInit {
       prodid: this.myForm.get('prodid').value
     };
     this.service.create(compra).subscribe((respuesta) => {
-      this.router.navigate(['compras'])
+      this.findAll();
       this.service.mensagem('compra creada con éxito!');
     }, err => {
       for (let i = 0; i < err.error.errors.length; i++) {
@@ -143,4 +150,39 @@ export class AddEditCompraComponent implements OnInit {
     })
 
 } 
+
+
+update(compra:Compra): void {
+  this.service.update(compra).subscribe((respuesta) => {
+    this.findAll();
+    this.service.mensagem("Compra actualizada con éxito");
+  }, err => {
+    this.service.mensagem('debe llenar todos los campos!')
+  });
+}
+
+esEditar(): void {
+  this.service.findById(this.compid).subscribe((respuesta) => {      
+    this.myForm.patchValue({
+    adqid: respuesta.adqid,
+    compbonificacion: respuesta.compbonificacion,
+    compcant: respuesta.compcant,
+    compcodctrl: respuesta.compcodctrl,
+    compconcepto: respuesta.compconcepto,
+    compdescuento: respuesta.compdescuento,
+    compfecha: respuesta.compfecha,
+    compice: respuesta.compice,
+    compimporte: respuesta.compimporte,
+    complotestock: respuesta.complotestock,
+    compnrocajas: respuesta.compnrocajas,
+    comppeso: respuesta.comppeso,
+    comppesoneto: respuesta.comppesoneto,
+    comppreciosubtotal: respuesta.comppreciosubtotal,
+    comppreciounitario: respuesta.comppreciounitario,
+    compum_impuesto: respuesta.compum_impuesto,
+    prodid: respuesta.prodid,    
+  });
+  });
+}
+
 }

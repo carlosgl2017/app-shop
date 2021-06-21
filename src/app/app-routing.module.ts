@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEditAdquisicionComponent } from './components/views/adquisicion/add-edit-adquisicion/add-edit-adquisicion.component';
 import { ListAdquisicionComponent } from './components/views/adquisicion/list-adquisicion/list-adquisicion.component';
+import { AddEditClienteComponent } from './components/views/cliente/add-edit-cliente/add-edit-cliente.component';
+import { ListClienteComponent } from './components/views/cliente/list-cliente/list-cliente.component';
 import { AddEditCompraComponent } from './components/views/compra/add-edit-compra/add-edit-compra.component';
 import { AddEditConceptoComponent } from './components/views/concepto/add-edit-concepto/add-edit-concepto.component';
 import { ListConceptoComponent } from './components/views/concepto/list-concepto/list-concepto.component';
@@ -37,6 +39,13 @@ const routes: Routes = [
 
    //compra
    { path: 'compras', component: AddEditCompraComponent },
+   { path: 'compras/create', component: AddEditCompraComponent },
+   { path: 'adquisiciones/update/:compid', component: AddEditCompraComponent },
+
+   //compra
+   { path: 'clientes', component: ListClienteComponent},
+   { path: 'clientes/create', component: AddEditClienteComponent},
+   { path: 'clientes/update/:cliid', component: AddEditClienteComponent },
    
   {
     path: 'login',
