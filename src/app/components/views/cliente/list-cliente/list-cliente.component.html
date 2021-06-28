@@ -76,7 +76,7 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="fecha_nacimiento">
       <th mat-header-cell *matHeaderCellDef>Fecha de Nacimiento</th>
-      <td mat-cell *matCellDef="let element">{{ element.fecha_nacimiento }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.fecha_nacimiento|date:"shortDate" }}</td>
     </ng-container>
 
       <!-- Symbol Column -->

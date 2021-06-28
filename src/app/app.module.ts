@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/template/header/header.component';
-
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
@@ -29,15 +27,17 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { LoginComponent } from './components/views/login/login.component';
-import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
+/* import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
 import { ProductoDeleteComponent } from './components/views/producto/producto-delete/producto-delete.component';
 import { ProductoReadComponent } from './components/views/producto/producto-read/producto-read.component';
 import { ProductoUpdateComponent } from './components/views/producto/producto-update/producto-update.component';
+ */
 import { PedidoCreateComponent } from './components/views/pedido/pedido-create/pedido-create.component';
 import { PedidoDeleteComponent } from './components/views/pedido/pedido-delete/pedido-delete.component';
 import { PedidoReadComponent } from './components/views/pedido/pedido-read/pedido-read.component';
@@ -46,7 +46,7 @@ import { EntregaCreateComponent } from './components/views/entrega/entrega-creat
 import { EntregaDeleteComponent } from './components/views/entrega/entrega-delete/entrega-delete.component';
 import { EntregaReadComponent } from './components/views/entrega/entrega-read/entrega-read.component';
 import { EntregaUpdateComponent } from './components/views/entrega/entrega-update/entrega-update.component';
-import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
+/* import { DetalleComponent } from './components/views/producto/detalle/detalle.component'; */
 //-------------pdf dependencies
 // Import pdfmake-wrapper and the fonts to use
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -65,7 +65,11 @@ import { ListConceptoComponent } from './components/views/concepto/list-concepto
 import { AddEditPruebareporteComponent } from './components/views/reporte/add-edit-pruebareporte/add-edit-pruebareporte.component';
 import { ListReporteComponent } from './components/views/reporte/list-reporte/list-reporte.component';
 import { AddEditClienteComponent } from './components/views/cliente/add-edit-cliente/add-edit-cliente.component';
-import { ListClienteComponent } from './components/views/cliente/list-cliente/list-cliente.component'; // fonts provided for pdfmake
+import { ListClienteComponent } from './components/views/cliente/list-cliente/list-cliente.component';
+import { AddEditCategoriaComponent } from './components/views/categoria/add-edit-categoria/add-edit-categoria.component';
+import { ListCategoriaComponent } from './components/views/categoria/list-categoria/list-categoria.component';
+import { AddEditProductoComponent } from './components/views/producto/add-edit-producto/add-edit-producto.component';
+import { ListProductoComponent } from './components/views/producto/list-producto/list-producto.component'; // fonts provided for pdfmake
 
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -78,10 +82,10 @@ PdfMakeWrapper.setFonts(pdfFonts);
     NavComponent,
     HomeComponent,
     LoginComponent,
-    ProductoCreateComponent,
+/*     ProductoCreateComponent,
     ProductoDeleteComponent,
     ProductoReadComponent,
-    ProductoUpdateComponent,
+    ProductoUpdateComponent, */
     PedidoCreateComponent,
     PedidoDeleteComponent,
     PedidoReadComponent,
@@ -90,7 +94,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
     EntregaDeleteComponent,
     EntregaReadComponent,
     EntregaUpdateComponent,
-    DetalleComponent,
+   /*  DetalleComponent, */
     AddEditAdquisicionComponent,
     ListAdquisicionComponent,
     MensajeConfirmacionComponent,
@@ -105,6 +109,10 @@ PdfMakeWrapper.setFonts(pdfFonts);
     ListReporteComponent,
     AddEditClienteComponent,
     ListClienteComponent,
+    AddEditCategoriaComponent,
+    ListCategoriaComponent,
+    AddEditProductoComponent,
+    ListProductoComponent,
   ],
   imports: [
     BrowserModule,
@@ -134,7 +142,8 @@ PdfMakeWrapper.setFonts(pdfFonts);
     MatPaginatorModule,
     MatSortModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

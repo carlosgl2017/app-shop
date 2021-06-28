@@ -9,6 +9,7 @@ import { Adquisicion } from "./adquisicion";
   providedIn: "root",
 })
 export class AdquisicionService {
+  adqid:number=0; //para pasar a compras
   baseUrl: String = environment.baseUrl;
   constructor(private http: HttpClient, private _snack: MatSnackBar) {}
 
@@ -33,13 +34,13 @@ export class AdquisicionService {
     const url = `${this.baseUrl}/adq/sel/${id}`;
     return this.http.get<Adquisicion>(url);
   }
-
   delete(id: Number): Observable<void> {
     const url = `${this.baseUrl}/adq/del/${id}`;
     return this.http.delete<void>(url);
   }
-  update(adquisicion: Adquisicion): Observable<void> {
-    const url = `${this.baseUrl}/adq/upd/${adquisicion.adqid}`;
+  update(adquisicion: Adquisicion,adqid:number): Observable<void> {
+    const url = `${this.baseUrl}/adq/upd/${adqid}`;
     return this.http.put<void>(url, adquisicion);
   } 
+  
 }

@@ -1,38 +1,34 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatTableDataSource } from "@angular/material/table";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import { Adquisicion } from "../adquisicion";
-import { AdquisicionService } from "../adquisicion.service";
-import { Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
-import { MensajeConfirmacionComponent } from "src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component";
+import { MatPaginator } from "@angular/material/paginator";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
+import { Router } from "@angular/router";
+import { MensajeConfirmacionComponent } from "src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component";
+import { Producto } from "../producto";
+import { ProductoService } from "../producto.service";
 
 @Component({
-  selector: "app-list-adquisicion",
-  templateUrl: "./list-adquisicion.component.html",
-  styleUrls: ["./list-adquisicion.component.css"],
+  selector: "app-list-producto",
+  templateUrl: "./list-producto.component.html",
+  styleUrls: ["./list-producto.component.css"],
 })
-export class ListAdquisicionComponent implements OnInit {
-  adquisiciones: Adquisicion[];
+export class ListProductoComponent implements OnInit {
+  productos: Producto[];
   displayedColumns: string[] = [
-    "adqid",
-    "adq_fec_fac_dui",
-    "adq_nit_ci_prov",
-    "adq_nro_fact",
-    "adq_subtotal",
-    "adq_total_importe_compra",
-    "adqdescrip",
-    "acciones",
+    "prodid",
+    "prodnombre",
+    "proddescrip",
+    "categoria_id",
+    "acciones"
   ];
 
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
   constructor(
-    private service: AdquisicionService,
+    private service: ProductoService,
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
@@ -41,17 +37,17 @@ export class ListAdquisicionComponent implements OnInit {
   ngOnInit(): void {
     this.findAll();
   }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
   //para cargar datos
   findAll() {
     this.service.findAll().subscribe((respuesta) => {
       console.log(respuesta);
-      this.adquisiciones = respuesta;
-      this.dataSource = new MatTableDataSource(this.adquisiciones); //this added, for table      
+      this.productos = respuesta;
+      this.dataSource = new MatTableDataSource(this.productos); //this added, for table
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
@@ -60,17 +56,17 @@ export class ListAdquisicionComponent implements OnInit {
   delete(index: number): void {
     const dialogRef = this.dialog.open(MensajeConfirmacionComponent, {
       width: "350px",
-      data: { mensaje: "Esta seguro que desea eliminar la adquisición" },
+      data: { mensaje: "Esta seguro que desea eliminar el producto" },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === "aceptar") {
         this.service.delete(index).subscribe(
           (respuesta) => {
-            this.router.navigate(["adquisiciones"]);
-            this.service.mensagem("adquisición  eliminada con éxito!");
+            this.router.navigate(["productos"]);
+            this.service.mensagem("producto eliminado con éxito!");
             this.findAll();
-            this.snackBar.open("La adquisición fue eliminado con éxito", "", {
+            this.snackBar.open("El producto fue eliminado con éxito", "", {
               duration: 3000,
             });
           },
@@ -81,13 +77,7 @@ export class ListAdquisicionComponent implements OnInit {
       }
     });
   }
-
-  navegarParaAdquisicionCreate() {
-    this.router.navigate(["adquisiciones/create"])
-  }
-  addcompras(adqid:number)
-  {
-   this.service.adqid=adqid;
-   this.router.navigate(["compras/create"])
+  navegarParaProductoCreate() {
+    this.router.navigate(["productos/create"]);
   }
 }

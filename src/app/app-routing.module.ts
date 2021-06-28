@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEditAdquisicionComponent } from './components/views/adquisicion/add-edit-adquisicion/add-edit-adquisicion.component';
 import { ListAdquisicionComponent } from './components/views/adquisicion/list-adquisicion/list-adquisicion.component';
+import { AddEditCategoriaComponent } from './components/views/categoria/add-edit-categoria/add-edit-categoria.component';
+import { ListCategoriaComponent } from './components/views/categoria/list-categoria/list-categoria.component';
 import { AddEditClienteComponent } from './components/views/cliente/add-edit-cliente/add-edit-cliente.component';
 import { ListClienteComponent } from './components/views/cliente/list-cliente/list-cliente.component';
 import { AddEditCompraComponent } from './components/views/compra/add-edit-compra/add-edit-compra.component';
@@ -11,13 +13,15 @@ import { AddEditGrupoComponent } from './components/views/grupo/add-edit-grupo/a
 import { ListGrupoComponent } from './components/views/grupo/list-grupo/list-grupo.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { LoginComponent } from './components/views/login/login.component';
-import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
+import { AddEditProductoComponent } from './components/views/producto/add-edit-producto/add-edit-producto.component';
+/* import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
 import { AuthGuard } from './components/views/producto/guards/auth.guard';
-import { RoleGuard } from './components/views/producto/guards/role.guard';
-import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
+import { RoleGuard } from './components/views/producto/guards/role.guard'; */
+import { ListProductoComponent } from './components/views/producto/list-producto/list-producto.component';
+/* import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
 import { ProductoDeleteComponent } from './components/views/producto/producto-delete/producto-delete.component';
 import { ProductoReadComponent } from './components/views/producto/producto-read/producto-read.component';
-import { ProductoUpdateComponent } from './components/views/producto/producto-update/producto-update.component';
+import { ProductoUpdateComponent } from './components/views/producto/producto-update/producto-update.component'; */
 import { AddEditProveedorComponent } from './components/views/proveedor/add-edit-proveedor/add-edit-proveedor.component';
 import { ListProveedorComponent } from './components/views/proveedor/list-proveedor/list-proveedor.component';
 import { ListReporteComponent } from './components/views/reporte/list-reporte/list-reporte.component';
@@ -51,7 +55,7 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  {
+/*   {
     path: 'productos',
     component: ProductoReadComponent
   },
@@ -70,7 +74,7 @@ const routes: Routes = [
   {
     path: 'productos/upload/:prodid',
     component: DetalleComponent
-  },
+  }, */
   
 
   //adquisicion
@@ -90,6 +94,16 @@ const routes: Routes = [
 
     //reporte
     { path: 'reportes', component: ListReporteComponent },
+
+    //categoria
+    { path: 'categorias', component: ListCategoriaComponent },
+    { path: 'categorias/create', component: AddEditCategoriaComponent },
+    { path: 'categorias/update/:catid', component: AddEditCategoriaComponent},
+
+      //producto
+      { path: 'productos', component: ListProductoComponent },
+      { path: 'productos/create', component: AddEditProductoComponent},
+      { path: 'productos/update/:prodid', component: AddEditProductoComponent},
 
 
 ];

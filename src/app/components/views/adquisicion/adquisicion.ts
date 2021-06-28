@@ -1,5 +1,5 @@
 export class Adquisicion{
-    adqid: number;
+    adqid?: number;
     adq_cod_control: number;
     adq_fec_fac_dui: Date;
     adq_nit_ci_prov: string;

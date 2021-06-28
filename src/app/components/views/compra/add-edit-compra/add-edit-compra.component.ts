@@ -7,6 +7,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { Router } from "@angular/router";
 import { MensajeConfirmacionComponent } from "src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component";
+import { AdquisicionService } from "../../adquisicion/adquisicion.service";
 
 import { Compra } from "../compra";
 import { CompraService } from "../compra.service";
@@ -39,6 +40,7 @@ export class AddEditCompraComponent implements OnInit {
   myForm: FormGroup;
   constructor(
     private service: CompraService,
+    private serviceadquisicion:AdquisicionService,
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
@@ -122,7 +124,7 @@ export class AddEditCompraComponent implements OnInit {
   create() {
     const compra: Compra = {
       compid: this.myForm.get('compid').value,
-      adqid: this.myForm.get('adqid').value,
+      adqid: this.serviceadquisicion.adqid,
       compbonificacion: this.myForm.get('compbonificacion').value,
       compcant: this.myForm.get('compcant').value,
       compcodctrl: this.myForm.get('compcodctrl').value,

@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Proveedor } from "../../proveedor/proveedor";
+import { ProveedorService } from "../../proveedor/proveedor.service";
 import { Adquisicion } from "../adquisicion";
 import { AdquisicionService } from "../adquisicion.service";
 
@@ -11,50 +13,23 @@ import { AdquisicionService } from "../adquisicion.service";
   styleUrls: ["./add-edit-adquisicion.component.css"],
 })
 export class AddEditAdquisicionComponent implements OnInit {
+  //distribuidores
+  proveedores: Proveedor[] = [];
   //para editar
   adqid: any;
   accion = "Crear";
   //para editar
   myForm: FormGroup;
 
-  /* adquisicion: Adquisicion = {
-    adqid: 3,
-    adq_cod_control: 0,
-    adq_fec_fac_dui: null,
-    adq_nit_ci_prov: "",
-    adq_nro_auto: 0,
-    adq_nro_dui: 0,
-    adq_nro_fact: 0,
-    adq_razon_social: "",
-    adq_subtotal: 0,
-    adq_tipo_compra: 0,
-    adq_total_cred_fiscal: 0,
-    adq_total_desc_bonif_rebaja_al_iva: 0,
-    adq_total_importe_base_cred_fiscal: 0,
-    adq_total_importe_compra: 0,
-    adq_total_no_sujeto_cred_fiscal: 0,
-    adqcondicpago: "",
-    adqdescrip: "",
-    adqdistribuidor: "",
-    adqfec_vence: null,
-    adqformapago: "",
-    adqnotasalida: "",
-    adqnro_pedido: "",
-    adqobservaciones: "",
-    adqreceptor: "",
-    adqruta: "",
-    adqtrasnporte: "",
-    provid: 0,
-  }; */
   constructor(
     private fb: FormBuilder,
     private service: AdquisicionService,
+    private serviceProveedores: ProveedorService,
     private router: Router,
     private aRoute: ActivatedRoute,
     private snackBar: MatSnackBar
   ) {
     this.myForm = this.fb.group({
-      adqid: ["", Validators.required],
       adq_cod_control: ["", Validators.required],
       adq_fec_fac_dui: [""],
       adq_nit_ci_prov: [""],
@@ -91,12 +66,13 @@ export class AddEditAdquisicionComponent implements OnInit {
       this.accion = "Editar";
       this.esEditar();
     }
+    this.listarProveedores();
   }
 
   create() {
     console.log(this.myForm);
     const adquisicion: Adquisicion = {
-      adqid: this.myForm.get("adqid").value,
+      
       adq_cod_control: this.myForm.get("adq_cod_control").value,
       adq_fec_fac_dui: this.myForm.get("adq_fec_fac_dui").value,
       adq_nit_ci_prov: this.myForm.get("adq_nit_ci_prov").value,
@@ -149,7 +125,7 @@ export class AddEditAdquisicionComponent implements OnInit {
   }
 
   update(adquisicion:Adquisicion): void {
-    this.service.update(adquisicion).subscribe((respuesta) => {
+    this.service.update(adquisicion, this.adqid).subscribe((respuesta) => {
       this.router.navigate(["adquisiciones"]);
       this.service.mensagem("Adquisición actualiza con éxito");
     }, err => {
@@ -190,33 +166,10 @@ export class AddEditAdquisicionComponent implements OnInit {
     });
     });
   }
-  /*  this.myForm.patchValue({
-      adqid: adquisicion.adqid,
-      adq_cod_control: adquisicion.adq_cod_control,
-      adq_fec_fac_dui: adquisicion.adq_fec_fac_dui,
-      adq_nit_ci_prov: adquisicion.adq_nit_ci_prov,
-      adq_nro_auto: adquisicion.adq_nro_auto,
-      adq_nro_dui: adquisicion.adq_nro_dui,
-      adq_nro_fact: adquisicion.adq_nro_fact,
-      adq_razon_social: adquisicion.adq_razon_social,
-      adq_subtotal: adquisicion.adq_subtotal,
-      adq_tipo_compra: adquisicion.adq_tipo_compra,
-      adq_total_cred_fiscal: adquisicion.adq_total_cred_fiscal,
-      adq_total_desc_bonif_rebaja_al_iva: adquisicion.adq_total_desc_bonif_rebaja_al_iva,
-      adq_total_importe_base_cred_fiscal: adquisicion.adq_total_importe_base_cred_fiscal,
-      adq_total_importe_compra: adquisicion.adq_total_importe_compra,
-      adq_total_no_sujeto_cred_fiscal: adquisicion.adq_total_no_sujeto_cred_fiscal,
-      adqcondicpago: adquisicion.adqcondicpago,
-      adqdescrip: adquisicion.adqdescrip,
-      adqdistribuidor: adquisicion.adqdistribuidor,
-      adqfec_vence: adquisicion.adqfec_vence,
-      adqformapago: adquisicion.adqformapago,
-      adqnotasalida: adquisicion.adqnotasalida,
-      adqnro_pedido: adquisicion.adqnro_pedido,
-      adqobservaciones: adquisicion.adqobservaciones,
-      adqreceptor: adquisicion.adqreceptor,
-      adqruta: adquisicion.adqruta,
-      adqtrasnporte: adquisicion.adqtrasnporte,
-      provid: adquisicion.provid,
-    }); */
+  /*-----------------------Listar selects--------------------------*/
+  listarProveedores() {
+    this.serviceProveedores.findAll().subscribe((respuesta) => {
+      this.proveedores = respuesta;
+    });
+  }
 }

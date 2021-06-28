@@ -1,8 +1,7 @@
 export interface Producto {
-    prodid?: String;
-    catid: String;
-    proddescrip: String;
-    prodestado: String;
-    prodprecioventa: String;
-    prodimagtxt: String;
+    prodid?: number;
+    categoria_id: number;
+    prodnombre:string;
+    proddescrip: string;
+    prodestado: string;
 }

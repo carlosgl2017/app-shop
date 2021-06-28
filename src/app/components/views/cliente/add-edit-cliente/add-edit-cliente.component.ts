@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from '../cliente';
@@ -11,7 +11,7 @@ import { ClienteService } from '../cliente.service';
   styleUrls: ['./add-edit-cliente.component.css']
 })
 export class AddEditClienteComponent implements OnInit {
-
+  tiposDocumentos: any[] = ['CI', 'Pasaporte', 'Otro'];
   //para editar
   cliid: any;
   accion = "Crear";
@@ -28,13 +28,13 @@ export class AddEditClienteComponent implements OnInit {
       cliid: [""],
       apellidos: [""],
       direccion: [""],
-      email: [""],
-      fecha_nacimiento: [""],
-      nombre: [""],
-      numero_doc: [""],
+      email: ["",[Validators.email]],
+      fecha_nacimiento: ["",Validators.required],
+      nombre: ["",[Validators.required]],
+      numero_doc: ["",[Validators.required]],
       sexo: [""],
       telefono: [""],
-      tipo_documento: [""],
+      tipo_documento: ["",[Validators.required]],
     });
     const idParam = "cliid";
     this.cliid = this.aRoute.snapshot.params[idParam];

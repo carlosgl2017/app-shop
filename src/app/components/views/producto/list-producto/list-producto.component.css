@@ -1,15 +1,15 @@
-.adquisicion {
+.producto {
   width: 95%;
   margin: 1rem;
 }
 @media (max-width: 450px) {
-  .adquisicion {
+  .producto {
     width: 70%;
   }
 }
 
 @media (max-width: 760px) {
-  .adquisicion {
+  .producto {
     width: 90%;
   }
 }

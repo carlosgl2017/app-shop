@@ -37,7 +37,7 @@ export class ClienteService {
   }
 
   delete(cliid: Number): Observable<void> {
-    const url = `${this.baseUrl}/con/del/${cliid}`;
+    const url = `${this.baseUrl}/cli/del/${cliid}`;
     return this.http.delete<void>(url);
   }
   
