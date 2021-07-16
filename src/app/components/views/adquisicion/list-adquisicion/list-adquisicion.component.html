@@ -4,6 +4,11 @@
   <div class="button-row">
     <button class="mat-elevation-z2" (click)="navegarParaAdquisicionCreate()" mat-stroked-button color="warn">
     <mat-icon>add</mat-icon>Nueva Adquisición</button> 
+    
+    &nbsp; &nbsp;<button  mat-stroked-button class="mat-elevation-z2" color="primary" (click)="exporter.exportTable('xlsx',{fileName:'lista adquisicion'})"> <mat-icon>cloud_download</mat-icon> xlsx</button>
+    &nbsp; &nbsp;<button  mat-stroked-button class="mat-elevation-z1" color="primary" (click)="exporter.exportTable('txt',{fileName:'lista adquisicion'})"><mat-icon>cloud_download</mat-icon> txt</button>
+    &nbsp; &nbsp;<button  mat-stroked-button class="mat-elevation-z1" color="primary" (click)="generate()"><mat-icon>cloud_download</mat-icon> pdf</button>
+
   </div>
   
   <mat-form-field>
@@ -11,7 +16,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input autocomplete="off">
   </mat-form-field>
   
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="adqid" matSortDirection="asc"> 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="adqid" matSortDirection="asc" matTableExporter #exporter="matTableExporter">
   
     <!-- Position Column -->
     <ng-container matColumnDef="adqid">
@@ -22,7 +27,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="adq_fec_fac_dui">
       <th mat-header-cell *matHeaderCellDef> Fecha de factura </th>
-      <td mat-cell *matCellDef="let element"> {{element.adq_fec_fac_dui}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.adqfecha}} </td>
     </ng-container>
   
     <!-- Weight Column -->

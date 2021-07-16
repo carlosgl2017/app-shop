@@ -2,13 +2,11 @@ export class Compra {
     compid : number;
     adqid :number;
     compbonificacion :number;
-    compcant :number;
     compcodctrl :string;
     compconcepto :string;
     compdescuento :number;
     compfecha :Date;
-    compice :number;
-    compimporte :number;
+    compice :number;    
     complotestock :number;
     compnrocajas :number;
     comppeso :number;
@@ -17,4 +15,13 @@ export class Compra {
     comppreciounitario :number;
     compum_impuesto :number;
     prodid :number; 
+
+    compimporte :number;
+    compprecioventa :number;    
+    compcant :number;
+    compstockactual:number;
+    compfechaelaboracion:Date;
+    compfechavencimiento:Date;
+
+
 }

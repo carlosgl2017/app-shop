@@ -43,4 +43,8 @@ export class ProveedorService {
     const url = `${this.baseUrl}/prov/upd/${provid}`;
     return this.http.put<void>(url, proveedor);
   }
+  filtrarProveedores(term:string):Observable<Proveedor[]>{
+    const url = `${this.baseUrl}/prov/sel/filtrar-proveedores/${term}`;
+    return this.http.get<Proveedor[]>(url)
+  }
 }

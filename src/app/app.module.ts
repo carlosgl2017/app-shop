@@ -49,9 +49,9 @@ import { EntregaUpdateComponent } from './components/views/entrega/entrega-updat
 /* import { DetalleComponent } from './components/views/producto/detalle/detalle.component'; */
 //-------------pdf dependencies
 // Import pdfmake-wrapper and the fonts to use
-import { PdfMakeWrapper } from 'pdfmake-wrapper';
+/* import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import pdfFonts from "pdfmake/build/vfs_fonts";
-PdfMakeWrapper.setFonts(pdfFonts);
+PdfMakeWrapper.setFonts(pdfFonts); */
 import { AddEditAdquisicionComponent } from './components/views/adquisicion/add-edit-adquisicion/add-edit-adquisicion.component';
 import { ListAdquisicionComponent } from './components/views/adquisicion/list-adquisicion/list-adquisicion.component';
 import { MensajeConfirmacionComponent } from './components/shared/mensaje-confirmacion/mensaje-confirmacion.component';
@@ -71,6 +71,22 @@ import { ListCategoriaComponent } from './components/views/categoria/list-catego
 import { AddEditProductoComponent } from './components/views/producto/add-edit-producto/add-edit-producto.component';
 import { ListProductoComponent } from './components/views/producto/list-producto/list-producto.component'; // fonts provided for pdfmake
 
+
+PdfMakeWrapper.setFonts(pdfFonts);
+import { PdfMakeWrapper, Img, IImg, Stack, Txt, IStack, IText, Ul, ITable, Table, Canvas, Rect, Item } from 'pdfmake-wrapper';
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+//import { type } from 'os';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { NumberSymbol } from '@angular/common';
+//import { table } from 'console';
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
+
+import { DatePipe } from "@angular/common";
+import { ReporteclienteComponent } from './components/views/cliente/reportecliente/reportecliente.component';
+import { ReporteproductoComponent } from './components/views/producto/reporteproducto/reporteproducto.component';
+import { AddEditUsuarioComponent } from './components/views/usuarios/add-edit-usuario/add-edit-usuario.component';
+import { ListUsuarioComponent } from './components/views/usuarios/list-usuario/list-usuario.component'; //para el formato de fechas
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
 //-----------ends
@@ -113,6 +129,10 @@ PdfMakeWrapper.setFonts(pdfFonts);
     ListCategoriaComponent,
     AddEditProductoComponent,
     ListProductoComponent,
+    ReporteclienteComponent,
+    ReporteproductoComponent,
+    AddEditUsuarioComponent,
+    ListUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -145,7 +165,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
     MatNativeDateModule,
     MatAutocompleteModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

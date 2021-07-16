@@ -4,6 +4,14 @@
   <div class="button-row">
     <button
       class="mat-elevation-z2"
+      routerLink="reporte"
+      mat-stroked-button
+      color="warn"
+    >
+      <mat-icon>summarize</mat-icon>reporte
+    </button>
+    <button
+      class="mat-elevation-z2"
       (click)="navegarParaClienteCreate()"
       mat-stroked-button
       color="warn"
@@ -74,9 +82,9 @@
       <td mat-cell *matCellDef="let element">{{ element.email }}</td>
     </ng-container>
     <!-- Symbol Column -->
-    <ng-container matColumnDef="fecha_nacimiento">
+    <ng-container matColumnDef="fechanacimiento">
       <th mat-header-cell *matHeaderCellDef>Fecha de Nacimiento</th>
-      <td mat-cell *matCellDef="let element">{{ element.fecha_nacimiento|date:"shortDate" }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.fechanacimiento|date:"shortDate" }}</td>
     </ng-container>
 
       <!-- Symbol Column -->

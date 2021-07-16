@@ -8,6 +8,17 @@ import { Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { MensajeConfirmacionComponent } from "src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Canvas, IImg, Img, IStack, ITable, PdfMakeWrapper, QR, Rect, Stack, Table, TextReference, Txt } from "pdfmake-wrapper";
+
+
+import { DateAdapter } from "@angular/material/core"; //para las fechas
+import { DatePipe } from "@angular/common";
+
+
+
+
+
+type TableRow = [number, Date, string, number, number, number, string];
 
 @Component({
   selector: "app-list-adquisicion",
@@ -31,12 +42,19 @@ export class ListAdquisicionComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
+  date = new Date();
+
   constructor(
     private service: AdquisicionService,
     private router: Router,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
-  ) {}
+    public snackBar: MatSnackBar,
+    private dateAdapter: DateAdapter<Date>,
+    private datePipe: DatePipe
+  ) {
+    this.dateAdapter.setLocale('es-ES');//idoma de los dias y meses del calendario
+    dateAdapter.getFirstDayOfWeek = () => 1; //empieza en lunes el primer dia del calendario
+  }
 
   ngOnInit(): void {
     this.findAll();
@@ -90,4 +108,77 @@ export class ListAdquisicionComponent implements OnInit {
    this.service.adqid=adqid;
    this.router.navigate(["compras/create"])
   }
+  //----------------------------------------------------------
+  async generate() {
+    const pdf = new PdfMakeWrapper();
+    const data = await this.fetchData();
+    pdf.info({
+      title: 'Reporte Adquisiciones',
+      author: 'Consultor IDI',
+      subject: '@mi.empresa.bo',
+    });
+    pdf.pageSize('LETTER');
+    pdf.pageOrientation('portrait');
+    //pdf.pageOrientation('landscape');
+    //pdf.pageMargins([60, 60, 60, 40]);
+    pdf.images({ Logo: await new Img('assets/img/bull.png').build() });
+    const Logo: IImg = await new Img('Logo', true)
+      .width(40)
+      .height(50)
+      .alignment('left')
+      .margin([10, -20, 100, 0])
+      .build();
+    pdf.add(Logo);
+    pdf.add('SORY MARTH');
+    pdf.add(new Txt('FECHA Y HORA: ' + this.datePipe.transform(this.date, 'dd/MM/yyyy HH:mm:ss'))
+      .alignment('right')
+      .margin([300, -10, -10, -10])
+      .fontSize(8)
+      .italics()
+      .end);
+    pdf.add(new Txt('USUARIO: ' + 'Nelson Machaca')
+      .alignment('right')
+      .margin([300, -10, -15, -15])
+      .fontSize(8)
+      .italics()
+      .end);
+    pdf.add(new Txt('LISTADO DE ADQUISICIONES')
+      .alignment('center')
+      .fontSize(13)
+      .bold()
+      .end);
+    pdf.add('\n');
+    pdf.add(this.creaTable(this.adquisiciones));
+    pdf.add('\n');
+    pdf.add(new QR('USUARIO: ' + 'Nelson Machaca' + this.datePipe.transform(this.date, 'dd/MM/yyyy HH:mm:ss'))
+      .fit(90)
+      .alignment('right')
+      .end);
+    //pdf.add(new Canvas([new Rect([-10, 10], [450, 100]).end]).end);
+    pdf.create().open();
+  }
+  creaTable(adquisiciones: Adquisicion[]): ITable {
+    [{}]
+    return new Table([
+      ['ID', 'FECHA', 'NIT/CI', 'NRO. FACTURA', 'SUBTOTAL', 'TOTAL IMPORTE', 'DESCRIPCIÓN'],
+      ...this.extractData(adquisiciones)
+    ])
+      .fontSize(10)
+      .alignment("center")
+      .end;
+  }
+  extractData(adquisiciones: Adquisicion[]): TableRow[] {
+    return adquisiciones.map(row => [row.adqid,
+    row.adqfecha,
+    row.adq_nit_ci_prov,
+    row.adq_nro_fact,
+    row.adq_subtotal,
+    row.adq_total_importe_compra,
+    row.adqdescrip]);
+  }
+  async fetchData(): Promise<Adquisicion[]> {
+    return fetch('http://localhost:8080/adq/sel')
+      .then(response => response.json());
+  }
+//----------------------------------------------------------
 }

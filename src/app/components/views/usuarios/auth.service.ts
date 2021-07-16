@@ -32,6 +32,7 @@ export class AuthService {
   }
 
   login(usuario: Usuario): Observable<any> {
+   //const urlEndpoint = "http://181.188.171.146:8080/shop/oauth/token";  //este para produccion
     const urlEndpoint = "http://localhost:8080/oauth/token";
     const credenciales = btoa("angularapp" + ":" + "supercharles");
     const httpHeaders = new HttpHeaders({

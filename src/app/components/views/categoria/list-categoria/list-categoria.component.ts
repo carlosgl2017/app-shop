@@ -21,7 +21,9 @@ export class ListCategoriaComponent implements OnInit {
   "catid",
   "nombre",
   "descripcion",
-  "acciones",
+  "linea",
+  "sublinea",
+  "acciones"
   ];
 
   dataSource = new MatTableDataSource();

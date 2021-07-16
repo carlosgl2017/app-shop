@@ -1,6 +1,6 @@
 export class Adquisicion{
     adqid?: number;
-    adq_cod_control: number;
+    adq_cod_control: string;
     adq_fec_fac_dui: Date;
     adq_nit_ci_prov: string;
     adq_nro_auto: number;
@@ -17,7 +17,6 @@ export class Adquisicion{
     adqcondicpago: string;
     adqdescrip: string;
     adqdistribuidor: string;
-    adqfec_vence: Date;
     adqformapago: string;
     adqnotasalida: string;
     adqnro_pedido: string;
@@ -25,5 +24,8 @@ export class Adquisicion{
     adqreceptor: string;
     adqruta: string;
     adqtrasnporte: string;
-    provid: number;
+    proveedor_id: number;
+    usuario_id:number;
+    adqfecha:Date;
+    estado:string;
 }

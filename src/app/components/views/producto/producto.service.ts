@@ -44,4 +44,14 @@ export class ProductoService {
     const url = `${this.baseUrl}/prod/upd/${prodid}`;
     return this.http.put<void>(url, producto);
   }
+
+  filtrarProductos(term:string):Observable<Producto[]>{
+    const url = `${this.baseUrl}/prod/sel/filtrar-productos/${term}`;
+    return this.http.get<Producto[]>(url)
+  }
+
+  filtrarProductosByFecha(fechaini:string,fechafin:string):Observable<Producto[]>{
+    const url = `${this.baseUrl}/prod/sel/${fechaini}/${fechafin}`;
+    return this.http.get<Producto[]>(url)
+  }
 }

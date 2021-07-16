@@ -1,5 +1,6 @@
 
 export const environment = {
-  production: false,
-  baseUrl: 'http://10.1.0.230:8080/shop'
+  production: true,
+  baseUrl: 'http://181.188.171.146:8080/shop'
+
 };

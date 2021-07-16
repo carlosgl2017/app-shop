@@ -1,0 +1,29 @@
+
+.reporte{
+    width: 95%; 
+    margin:1rem;
+  }
+  @media(max-width:450px){
+   .reporte{
+       width: 70%;
+   }
+  }
+  
+  @media(max-width:760px){
+     .reporte{
+         width:90%;
+     }
+  }
+
+.example-container{
+    width: 100%;
+}
+
+.mda-form-msg{
+    color:#f44336;
+}
+
+.btn-success {
+    background-color: #f44336;
+    border-color: #f44336;
+}

@@ -3,7 +3,7 @@ export interface Cliente {
   apellidos:string,
   direccion:string,
   email:string,
-  fecha_nacimiento : Date,
+  fechanacimiento : Date,
   nombre:string,
   numero_doc:string,
   sexo:string,

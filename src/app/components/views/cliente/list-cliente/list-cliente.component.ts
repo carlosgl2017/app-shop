@@ -22,7 +22,7 @@ export class ListClienteComponent implements OnInit {
     "apellidos",
     "direccion",
     "email",
-    "fecha_nacimiento",
+    "fechanacimiento",
     "nombre",
     "numero_doc",
     "sexo",

@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Cliente } from '../cliente';
-import { ClienteService } from '../cliente.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Cliente } from "../cliente";
+import { ClienteService } from "../cliente.service";
 
 @Component({
-  selector: 'app-add-edit-cliente',
-  templateUrl: './add-edit-cliente.component.html',
-  styleUrls: ['./add-edit-cliente.component.css']
+  selector: "app-add-edit-cliente",
+  templateUrl: "./add-edit-cliente.component.html",
+  styleUrls: ["./add-edit-cliente.component.css"],
 })
 export class AddEditClienteComponent implements OnInit {
-  tiposDocumentos: any[] = ['CI', 'Pasaporte', 'Otro'];
+  tiposDocumentos: any[] = ["CI", "Pasaporte", "Otro"];
+  tiposSexo: any[] = ["Masculino", "Femenino"];
   //para editar
   cliid: any;
   accion = "Crear";
@@ -25,16 +26,15 @@ export class AddEditClienteComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.myForm = this.fb.group({
-      cliid: [""],
       apellidos: [""],
       direccion: [""],
-      email: ["",[Validators.email]],
-      fecha_nacimiento: ["",Validators.required],
-      nombre: ["",[Validators.required]],
-      numero_doc: ["",[Validators.required]],
+      email: ["", [Validators.email]],
+      fechanacimiento: ["", [Validators.required]],
+      nombre: ["", [Validators.required]],
+      numero_doc: ["", [Validators.required]],
       sexo: [""],
       telefono: [""],
-      tipo_documento: ["",[Validators.required]],
+      tipo_documento: ["", [Validators.required]],
     });
     const idParam = "cliid";
     this.cliid = this.aRoute.snapshot.params[idParam];
@@ -48,12 +48,11 @@ export class AddEditClienteComponent implements OnInit {
   }
   create() {
     const cliente: Cliente = {
-      cliid: this.myForm.get("cliid").value,
+      nombre: this.myForm.get("nombre").value,
       apellidos: this.myForm.get("apellidos").value,
       direccion: this.myForm.get("direccion").value,
-       email: this.myForm.get("email").value,
-      fecha_nacimiento: this.myForm.get("fecha_nacimiento").value,
-      nombre: this.myForm.get("nombre").value,
+      email: this.myForm.get("email").value,
+      fechanacimiento: this.myForm.get("fechanacimiento").value,     
       numero_doc: this.myForm.get("numero_doc").value,
       sexo: this.myForm.get("sexo").value,
       telefono: this.myForm.get("telefono").value,
@@ -91,15 +90,15 @@ export class AddEditClienteComponent implements OnInit {
   esEditar(): void {
     this.service.findById(this.cliid).subscribe((respuesta) => {
       this.myForm.patchValue({
-        apellidos  :respuesta.apellidos ,
-        direccion :respuesta.direccion,
-        email:respuesta.email,
-        fecha_nacimiento:respuesta.fecha_nacimiento,
-        nombre:respuesta.nombre,
-        numero_doc:respuesta.numero_doc,
-        sexo:respuesta.sexo,
-        telefono:respuesta.telefono,
-        tipo_documento:respuesta.tipo_documento
+        apellidos: respuesta.apellidos,
+        direccion: respuesta.direccion,
+        email: respuesta.email,
+        fechanacimiento: respuesta.fechanacimiento,
+        nombre: respuesta.nombre,
+        numero_doc: respuesta.numero_doc,
+        sexo: respuesta.sexo,
+        telefono: respuesta.telefono,
+        tipo_documento: respuesta.tipo_documento,
       });
     });
   }

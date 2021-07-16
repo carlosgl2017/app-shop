@@ -1,13 +1,18 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { flatMap, map } from "rxjs/operators";
 import { MensajeConfirmacionComponent } from "src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component";
 import { AdquisicionService } from "../../adquisicion/adquisicion.service";
+import { Categoria } from "../../categoria/categoria";
+import { Producto } from "../../producto/producto";
+import { ProductoService } from "../../producto/producto.service";
 
 import { Compra } from "../compra";
 import { CompraService } from "../compra.service";
@@ -18,6 +23,11 @@ import { CompraService } from "../compra.service";
   styleUrls: ["./add-edit-compra.component.css"],
 })
 export class AddEditCompraComponent implements OnInit {
+  /*-------autocomplete---------*/
+      autocompleteControl = new FormControl();
+      productos: string[] = ['One', 'Two', 'Three'];
+      productosFiltrados: Observable<Producto[]>;
+  /*-----------*/
   //para editar
   compid: any;
   accion = "Crear";
@@ -26,10 +36,11 @@ export class AddEditCompraComponent implements OnInit {
   displayedColumns: string[] = [
     "compid",
     "adqid",
-    "compbonificacion",
+    "compimporte",
     "compcant",
-    "compcodctrl",
-    "compconcepto",
+    "compprecioventa",
+    "compstockactual",
+    "prodid",
     "acciones",
   ];
 
@@ -44,7 +55,9 @@ export class AddEditCompraComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private serviceProducto:ProductoService
+
   ) {
     this.myForm = this.fb.group({
       compid: [""],
@@ -66,6 +79,12 @@ export class AddEditCompraComponent implements OnInit {
       compum_impuesto: [""],
       ctrllog: [""],
       prodid: [""],
+      compfechavencimiento: [""],
+      compfechaelaboracion: [""],
+      compstockactual: [""],
+      compprecioventa: [""],
+
+
     });
   }
 
@@ -75,6 +94,12 @@ export class AddEditCompraComponent implements OnInit {
       this.accion = "Editar";
       this.esEditar();
     }
+
+    this.productosFiltrados = this.autocompleteControl.valueChanges
+    .pipe(
+      map(value=>typeof value === 'string'? value:value.nombre),
+      flatMap(value => value ? this._filter(value):[])
+    );
   }
 
   applyFilter(event: Event) {
@@ -140,7 +165,11 @@ export class AddEditCompraComponent implements OnInit {
       comppreciosubtotal: this.myForm.get('comppreciosubtotal').value,
       comppreciounitario: this.myForm.get('comppreciounitario').value,
       compum_impuesto: this.myForm.get('compum_impuesto').value,
-      prodid: this.myForm.get('prodid').value
+      prodid: this.myForm.get('prodid').value,
+      compprecioventa: this.myForm.get('compprecioventa').value,
+      compstockactual: this.myForm.get('compstockactual').value,
+      compfechaelaboracion: this.myForm.get('compfechaelaboracion').value,
+      compfechavencimiento: this.myForm.get('compfechavencimiento').value
     };
     this.service.create(compra).subscribe((respuesta) => {
       this.findAll();
@@ -183,8 +212,22 @@ esEditar(): void {
     comppreciounitario: respuesta.comppreciounitario,
     compum_impuesto: respuesta.compum_impuesto,
     prodid: respuesta.prodid,    
+    compprecioventa: respuesta.compprecioventa,    
+    compstockactual: respuesta.compstockactual,    
+    compfechaelaboracion: respuesta.compfechaelaboracion,    
+    compfechavencimiento: respuesta.compfechavencimiento,    
   });
   });
+}
+
+/*--------------------------------*/
+private _filter(value: string): Observable<Producto[]> {
+  const filterValue = value.toLowerCase();
+  return this.serviceProducto.filtrarProductos(filterValue);
+}
+
+mostrarNombre(producto?:Producto):string| undefined{
+  return producto? producto.prodnombre: undefined;
 }
 
 }

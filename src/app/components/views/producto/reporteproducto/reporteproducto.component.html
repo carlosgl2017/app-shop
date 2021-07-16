@@ -1,0 +1,30 @@
+<mat-card class="reporte mat-elevation-z4">
+    <mat-card-title class="title text-center">Seleccione periodo de tiempo para productos</mat-card-title>
+<form >
+    
+  <div class=" row col-md-12">
+    <div class="col-md-6">
+    <mat-form-field class="axample-container">
+      <mat-label>Fecha inicial</mat-label>
+      <input type="date" matInput   id="fechaini" #fechaini />
+    </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+    <mat-form-field class="axample-container">
+        <mat-label>Fecha Final</mat-label>
+        <input type="date" id="fechafin" matInput  #fechafin/>
+      </mat-form-field>
+    </div>
+  </div>
+
+   
+
+
+  <div class="col-md-12 text-center">
+      <button class="btn btn-primary" (click)="reporteProd(fechaini.value,fechafin.value)">Generar PDF</button>
+  </div>
+
+
+</form>
+</mat-card>

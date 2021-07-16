@@ -27,7 +27,8 @@ export class AddEditCategoriaComponent implements OnInit {
       catid: [""],
       nombre: [""],
       descripcion: [""],
-      estado: [""]
+      linea: [""],
+      sublinea: [""],
     });
     const idParam = "catid";
     this.catid = this.aRoute.snapshot.params[idParam];
@@ -44,7 +45,8 @@ export class AddEditCategoriaComponent implements OnInit {
       catid: this.myForm.get("catid").value,
       nombre: this.myForm.get("nombre").value,
       descripcion: this.myForm.get("descripcion").value,
-      estado: this.myForm.get("estado").value,
+      linea: this.myForm.get("linea").value,
+      sublinea: this.myForm.get("sublinea").value 
     };
     if (this.catid !== undefined) {
       this.update(categoria);
@@ -80,7 +82,8 @@ export class AddEditCategoriaComponent implements OnInit {
       this.myForm.patchValue({
         nombre: respuesta.nombre,
         descripcion: respuesta.descripcion,
-        estado: respuesta.estado,
+        linea: respuesta.linea,
+        sublinea: respuesta.sublinea,
       });
     });
   }

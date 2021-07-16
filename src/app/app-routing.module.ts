@@ -6,6 +6,8 @@ import { AddEditCategoriaComponent } from './components/views/categoria/add-edit
 import { ListCategoriaComponent } from './components/views/categoria/list-categoria/list-categoria.component';
 import { AddEditClienteComponent } from './components/views/cliente/add-edit-cliente/add-edit-cliente.component';
 import { ListClienteComponent } from './components/views/cliente/list-cliente/list-cliente.component';
+
+import { ReporteclienteComponent } from './components/views/cliente/reportecliente/reportecliente.component';
 import { AddEditCompraComponent } from './components/views/compra/add-edit-compra/add-edit-compra.component';
 import { AddEditConceptoComponent } from './components/views/concepto/add-edit-concepto/add-edit-concepto.component';
 import { ListConceptoComponent } from './components/views/concepto/list-concepto/list-concepto.component';
@@ -18,6 +20,7 @@ import { AddEditProductoComponent } from './components/views/producto/add-edit-p
 import { AuthGuard } from './components/views/producto/guards/auth.guard';
 import { RoleGuard } from './components/views/producto/guards/role.guard'; */
 import { ListProductoComponent } from './components/views/producto/list-producto/list-producto.component';
+import { ReporteproductoComponent } from './components/views/producto/reporteproducto/reporteproducto.component';
 /* import { ProductoCreateComponent } from './components/views/producto/producto-create/producto-create.component';
 import { ProductoDeleteComponent } from './components/views/producto/producto-delete/producto-delete.component';
 import { ProductoReadComponent } from './components/views/producto/producto-read/producto-read.component';
@@ -50,6 +53,7 @@ const routes: Routes = [
    { path: 'clientes', component: ListClienteComponent},
    { path: 'clientes/create', component: AddEditClienteComponent},
    { path: 'clientes/update/:cliid', component: AddEditClienteComponent },
+   { path: 'clientes/reporte', component: ReporteclienteComponent },
    
   {
     path: 'login',
@@ -104,7 +108,7 @@ const routes: Routes = [
       { path: 'productos', component: ListProductoComponent },
       { path: 'productos/create', component: AddEditProductoComponent},
       { path: 'productos/update/:prodid', component: AddEditProductoComponent},
-
+      { path: 'productos/reporte', component: ReporteproductoComponent },
 
 ];
 

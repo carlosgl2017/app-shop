@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { flatMap, map } from "rxjs/operators";
 import { Proveedor } from "../../proveedor/proveedor";
 import { ProveedorService } from "../../proveedor/proveedor.service";
 import { Adquisicion } from "../adquisicion";
@@ -13,8 +15,11 @@ import { AdquisicionService } from "../adquisicion.service";
   styleUrls: ["./add-edit-adquisicion.component.css"],
 })
 export class AddEditAdquisicionComponent implements OnInit {
-  //distribuidores
-  proveedores: Proveedor[] = [];
+  /*-------autocomplete---------*/
+  autocompleteControl = new FormControl();
+  proveedores: string[] = ['One', 'Two', 'Three'];
+  proveedoresFiltrados: Observable<Proveedor[]>;
+/*-----------autocomplete------*/
   //para editar
   adqid: any;
   accion = "Crear";
@@ -47,7 +52,6 @@ export class AddEditAdquisicionComponent implements OnInit {
       adqcondicpago: [""],
       adqdescrip: [""],
       adqdistribuidor: [""],
-      adqfec_vence: [""],
       adqformapago: [""],
       adqnotasalida: [""],
       adqnro_pedido: [""],
@@ -55,7 +59,10 @@ export class AddEditAdquisicionComponent implements OnInit {
       adqreceptor: [""],
       adqruta: [""],
       adqtrasnporte: [""],
-      provid: [""],
+      proveedor_id: [""],
+      usuario_id: [""],
+      adqfecha: [""],
+      estado: [""],
     });
     const idParam = "adqid";
     this.adqid = this.aRoute.snapshot.params[idParam];
@@ -66,13 +73,16 @@ export class AddEditAdquisicionComponent implements OnInit {
       this.accion = "Editar";
       this.esEditar();
     }
-    this.listarProveedores();
+    this.proveedoresFiltrados = this.autocompleteControl.valueChanges
+      .pipe(
+        map(value=>typeof value === 'string'? value:value.nombre),
+        flatMap(value => value ? this._filter(value):[])
+      );
   }
 
   create() {
     console.log(this.myForm);
-    const adquisicion: Adquisicion = {
-      
+    const adquisicion: Adquisicion = {      
       adq_cod_control: this.myForm.get("adq_cod_control").value,
       adq_fec_fac_dui: this.myForm.get("adq_fec_fac_dui").value,
       adq_nit_ci_prov: this.myForm.get("adq_nit_ci_prov").value,
@@ -97,7 +107,6 @@ export class AddEditAdquisicionComponent implements OnInit {
       adqcondicpago: this.myForm.get("adqcondicpago").value,
       adqdescrip: this.myForm.get("adqdescrip").value,
       adqdistribuidor: this.myForm.get("adqdistribuidor").value,
-      adqfec_vence: this.myForm.get("adqfec_vence").value,
       adqformapago: this.myForm.get("adqformapago").value,
       adqnotasalida: this.myForm.get("adqnotasalida").value,
       adqnro_pedido: this.myForm.get("adqnro_pedido").value,
@@ -105,7 +114,10 @@ export class AddEditAdquisicionComponent implements OnInit {
       adqreceptor: this.myForm.get("adqreceptor").value,
       adqruta: this.myForm.get("adqruta").value,
       adqtrasnporte: this.myForm.get("adqtrasnporte").value,
-      provid: this.myForm.get("provid").value,
+      proveedor_id: this.myForm.get("proveedor_id").value,
+      usuario_id: this.myForm.get("usuario_id").value,
+      adqfecha: this.myForm.get("adqfecha").value,
+      estado: this.myForm.get("estado").value,
     };
     if (this.adqid !== undefined) {
       this.update(adquisicion);
@@ -154,7 +166,6 @@ export class AddEditAdquisicionComponent implements OnInit {
       adqcondicpago: respuesta.adqcondicpago,
       adqdescrip: respuesta.adqdescrip,
       adqdistribuidor: respuesta.adqdistribuidor,
-      adqfec_vence: respuesta.adqfec_vence,
       adqformapago: respuesta.adqformapago,
       adqnotasalida: respuesta.adqnotasalida,
       adqnro_pedido: respuesta.adqnro_pedido,
@@ -162,14 +173,21 @@ export class AddEditAdquisicionComponent implements OnInit {
       adqreceptor: respuesta.adqreceptor,
       adqruta: respuesta.adqruta,
       adqtrasnporte: respuesta.adqtrasnporte,
-      provid: respuesta.provid,
+      proveedor_id: respuesta.proveedor_id,
+      usuario_id: respuesta.usuario_id,
+      adqfecha: respuesta.adqfecha,
+      estado: respuesta.estado,
     });
     });
   }
-  /*-----------------------Listar selects--------------------------*/
-  listarProveedores() {
-    this.serviceProveedores.findAll().subscribe((respuesta) => {
-      this.proveedores = respuesta;
-    });
+  
+  /*--------------------------------*/
+  private _filter(value: string): Observable<Proveedor[]> {
+    const filterValue = value.toLowerCase();
+    return this.serviceProveedores.filtrarProveedores(filterValue);
+  }
+
+  mostrarNombre(proveedor?:Proveedor):string| undefined{
+    return proveedor? proveedor.provnombre: undefined;
   }
 }

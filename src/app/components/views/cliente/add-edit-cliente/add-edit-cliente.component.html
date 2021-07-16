@@ -1,17 +1,18 @@
 <mat-card class="adquisicion mat-elevation-z4">
   <mat-card-title class="title">{{ accion }} Cliente</mat-card-title>
 
-  <!-- <pre>{{myForm.value | json}}</pre> -->
+   <!-- <pre>{{myForm.value | json}}</pre>  -->
   <form [formGroup]="myForm">
     <div class="row">
+
       <div class="col-md-3">
-        <mat-form-field class="axample-container">
-          <mat-label>Nombre</mat-label>
-          <input type="text" matInput formControlName="nombre" />
-        </mat-form-field>
-        <div *ngIf="myForm.get('nombre').hasError('required') && myForm.get('nombre').touched" style="margin-top: -20px;">
-          <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
-      </div>
+          <mat-form-field class="axample-container">
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput formControlName="nombre" />
+          </mat-form-field>
+          <div *ngIf="myForm.get('nombre').hasError('required') && myForm.get('nombre').touched" style="margin-top: -20px;">
+            <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+          </div>
       </div>
 
       <div class="col-md-3">
@@ -24,11 +25,11 @@
       <div class="col-md-3">
         <mat-form-field class="axample-container">
           <mat-label>Fecha de Nacimiento</mat-label>
-          <input type="date" matInput formControlName="fecha_nacimiento" />
+          <input type="date" matInput formControlName="fechanacimiento" />
         </mat-form-field>
-        <div *ngIf="myForm.get('fecha_nacimiento').hasError('required') && myForm.get('fecha_nacimiento').touched" style="margin-top: -20px;">
+        <div *ngIf="myForm.get('fechanacimiento').hasError('required') && myForm.get('fechanacimiento').touched" style="margin-top: -20px;">
           <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
-      </div>
+        </div>
       </div>
 
       <div class="col-md-3">
@@ -49,6 +50,13 @@
       </div>
 
       <div class="col-md-3">
+        <mat-form-field class="axample-container">
+          <mat-label>Teléfono</mat-label>
+          <input matInput formControlName="telefono" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
         <mat-form-field class="example-container">
           <mat-label>Tipo Documento</mat-label>
           <mat-select formControlName="tipo_documento">
@@ -59,20 +67,33 @@
         </mat-form-field>
         <div *ngIf="myForm.get('tipo_documento').hasError('required') && myForm.get('tipo_documento').touched" style="margin-top: -20px;">
           <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+      </div>      
       </div>
-      </div>
-
-      
 
       <div class="col-md-3">
         <mat-form-field class="axample-container">
           <mat-label>Número de documento</mat-label>
           <input matInput formControlName="numero_doc" />
         </mat-form-field>
-        <div *ngIf="myForm.get('numero_doc').hasError('required') && myForm.get('numero_doc').touched" style="margin-top: -20px;">
-          <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+          <div *ngIf="myForm.get('numero_doc').hasError('required') && myForm.get('numero_doc').touched" style="margin-top: -20px;">
+            <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+          </div>
       </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="example-container">
+          <mat-label>Sexo</mat-label>
+          <mat-select formControlName="sexo">
+            <mat-option *ngFor="let tsexo of tiposSexo" [value]="tsexo">
+              {{ tsexo }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>       
       </div>
+
+      
+
+      
 
       <br />
       <div class="col-lg-12">

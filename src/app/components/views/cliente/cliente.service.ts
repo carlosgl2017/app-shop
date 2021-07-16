@@ -45,4 +45,9 @@ export class ClienteService {
     const url = `${this.baseUrl}/cli/upd/${cliid}`;
     return this.http.put<void>(url, cliente);
   }
+
+  filtrarFecha(fechaini:string,fechafin:string):Observable<Cliente[]>{
+    const url = `${this.baseUrl}/cli/sel/fechanac/${fechaini}/${fechafin}`;
+    return this.http.get<Cliente[]>(url)
+  }
 }

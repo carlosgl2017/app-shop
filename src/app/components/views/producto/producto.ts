@@ -3,5 +3,5 @@ export interface Producto {
     categoria_id: number;
     prodnombre:string;
     proddescrip: string;
-    prodestado: string;
+    prodestado?: string;
 }

@@ -16,7 +16,7 @@
       <div class="col-md-3">
         <mat-form-field class="axample-container">
           <mat-label>Fecha de factura</mat-label>
-          <input type="date" matInput formControlName="adq_fec_fac_dui"/>
+          <input type="date" matInput formControlName="adqfecha"/>
         </mat-form-field>
       </div>
 
@@ -34,7 +34,7 @@
       <div class="col-md-3">
         <mat-form-field class="axample-container">
           <mat-label>Número de autorización</mat-label>
-          <input   matInput formControlName="adq_nro_auto" />
+          <input type="number"  matInput formControlName="adq_nro_auto" />
         </mat-form-field>
       </div>
 
@@ -69,7 +69,7 @@
       <div class="col-md-3">
         <mat-form-field class="axample-container">
           <mat-label>Tipo de compra</mat-label>
-          <input  matInput formControlName="adq_tipo_compra" />
+          <input type="number" matInput formControlName="adq_tipo_compra" />
         </mat-form-field>
       </div>
 
@@ -89,7 +89,7 @@
 
       <div class="col-md-3">
         <mat-form-field class="axample-container">
-          <mat-label>Total credito fiscal</mat-label>
+          <mat-label>Total importe base credito fiscal</mat-label>
           <input type="number" matInput formControlName="adq_total_importe_base_cred_fiscal" />
         </mat-form-field>
       </div>
@@ -129,13 +129,7 @@
         </mat-form-field>
       </div>    
 
-      <div class="col-md-3">
-        <mat-form-field class="axample-container">
-          <mat-label>Fecha de Vencimiento</mat-label>
-          <input type="date" matInput formControlName="adqfec_vence" />
-        </mat-form-field>
-      </div>
-
+      
       <div class="col-md-3">
         <mat-form-field class="axample-container">
           <mat-label>Forma de Pago</mat-label>
@@ -187,12 +181,31 @@
 
       
 
-      <mat-form-field class="form">
-        <mat-label>Seleccione proveedor</mat-label>
-        <mat-select name="provid" matInput >           
-            <mat-option *ngFor="let prove of proveedores" [value]="prove.provid">{{prove.provnombre}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-label>Selecciones Proveedor</mat-label>
+          <input            
+            type="text"
+            placeholder="Seleccione un proveedor"
+            aria-label="Proveedores"
+            matInput           
+            [formControl]="autocompleteControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            [displayWith]="mostrarNombre"
+          >
+            <mat-option 
+              *ngFor="let proveedor of proveedoresFiltrados | async"
+              [value]="proveedor.provid"
+            >
+              {{proveedor.provnombre}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
 
       <br />
       <div class="col-lg-12">

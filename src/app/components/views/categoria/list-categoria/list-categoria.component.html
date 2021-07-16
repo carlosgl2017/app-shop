@@ -49,7 +49,24 @@
         <th mat-header-cell *matHeaderCellDef>Descripcion</th>
         <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
       </ng-container>  
-   
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="linea">
+        <th mat-header-cell *matHeaderCellDef>Línea</th>
+        <td mat-cell *matCellDef="let element">{{ element.linea }}</td>
+      </ng-container>  
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="sublinea">
+        <th mat-header-cell *matHeaderCellDef>SubLínea</th>
+        <td mat-cell *matCellDef="let element">{{ element.sublinea }}</td>
+      </ng-container>   
+      
+       <!-- Weight Column -->
+       <ng-container matColumnDef="sublinea">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+      </ng-container>    
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="acciones">

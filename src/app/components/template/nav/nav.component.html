@@ -1,58 +1,62 @@
 <mat-sidenav-container class="side">
-   <mat-sidenav mode="side" opened *ngIf="authService.isAuthenticated()">
-      <mat-nav-list>
-         <a routerLink="" mat-list-item>
-            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-            Inicio
-         </a>
-          <!--inclui al menu-->
-      <a routerLink="/grupos" mat-list-item>
-         <mat-icon aria-hidden="false">group_work</mat-icon>
-         Grupos
-       </a>
- 
-       <a routerLink="/conceptos" mat-list-item>
-         <mat-icon aria-hidden="false">perm_data_setting</mat-icon>
-         Concepto
-       </a>
- 
-       <!--inclui al menu-->
-         <a routerLink="/ventas" mat-list-item>
-            <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_bag</mat-icon>
-            Ventas
-         </a>
-
+  <mat-sidenav mode="side" opened *ngIf="authService.isAuthenticated()">
+    <mat-nav-list>
+      <a routerLink="" mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >home</mat-icon
+        >
+        Inicio
+      </a>
+      <!--inclui al menu-->
    
-         <a routerLink="/categorias" mat-list-item>
-            <mat-icon aria-hidden="false" aria-label="Example home icon">inventory</mat-icon>
-            Categorias
-         </a>
-         <a routerLink="/productos" mat-list-item>
-            <mat-icon aria-hidden="false" aria-label="Example home icon">list_alt</mat-icon>
-            Productos
-         </a>
-         <a routerLink="/proveedores" mat-list-item>
-            <mat-icon aria-hidden="false" >how_to_reg</mat-icon>
-            Proveedor
-         </a>
+      <a routerLink="/adquisiciones" mat-list-item>
+        <mat-icon aria-hidden="false">menu_book</mat-icon>
+        Adquisición
+      </a>
+      <!--inclui al menu-->
+      <a routerLink="/ventas" mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >shopping_bag</mat-icon
+        >
+        Ventas
+      </a>
 
-         <a routerLink="/adquisiciones" mat-list-item>
-            <mat-icon aria-hidden="false" >menu_book</mat-icon>
-            Adquisición
-         </a>
+      <a routerLink="/categorias" mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >inventory</mat-icon
+        >
+        Categorias
+      </a>
+      <a routerLink="/productos" mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >list_alt</mat-icon
+        >
+        Productos
+      </a>
+      <a routerLink="/proveedores" mat-list-item>
+        <mat-icon aria-hidden="false">how_to_reg</mat-icon>
+        Proveedor
+      </a>
 
-         <a routerLink="/clientes" mat-list-item>
-            <mat-icon aria-hidden="false" >people</mat-icon>
-            Cliente
-         </a>
+      <a routerLink="/clientes" mat-list-item>
+        <mat-icon aria-hidden="false">people</mat-icon>
+        Cliente
+      </a>
 
-         <a routerLink="/reportes" mat-list-item>
-            <mat-icon aria-hidden="false" >menu_book</mat-icon>
-            Reportes
-         </a>
-      </mat-nav-list>
-   </mat-sidenav>
-   <mat-sidenav-content>
-      <router-outlet></router-outlet>      
-   </mat-sidenav-content>
+       <!--inclui al menu-->
+       <a routerLink="/grupos" mat-list-item>
+        <mat-icon aria-hidden="false">group_work</mat-icon>
+        Grupos
+      </a>
+
+      <a routerLink="/conceptos" mat-list-item>
+        <mat-icon aria-hidden="false">perm_data_setting</mat-icon>
+        Concepto
+      </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

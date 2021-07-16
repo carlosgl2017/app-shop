@@ -25,7 +25,7 @@ export class AddEditProductoComponent implements OnInit {
 opcionesEstado: any[] = ['activado', 'desactivado'];
 //para editar
 prodid: any;
-accion = "Crear";
+accion = "Añadir";
 //para editar
 myForm: FormGroup;
 constructor(
@@ -65,7 +65,6 @@ create() {
     prodid: this.myForm.get("prodid").value,
     prodnombre: this.myForm.get("prodnombre").value,
     proddescrip: this.myForm.get("proddescrip").value,
-    prodestado: this.myForm.get("prodestado").value,
     categoria_id: this.myForm.get("categoria_id").value,
   };
   if (this.prodid !== undefined) {
