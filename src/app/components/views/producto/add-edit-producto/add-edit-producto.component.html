@@ -31,28 +31,15 @@
     
 
       <div class="col-md-3">
-        <mat-form-field>
-          <mat-label>Categoria</mat-label>
-          <input
-            type="text"
-            placeholder="Seleccione una categoria"
-            aria-label="Categorias"
-            matInput
-            [formControl]="autocompleteControl"
-            [matAutocomplete]="auto"
-          />
-          <mat-autocomplete
-            #auto="matAutocomplete"
-            [displayWith]="mostrarNombre"
-          >
-            <mat-option
-              *ngFor="let categoria of categoriasFiltrados | async"
-              [value]="categoria"
-            >
-              {{ categoria.nombre }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+          <mat-form-field >
+              <mat-label>Seleccionar Categoria</mat-label>
+              <mat-select name="categoria_id"  placeholder="Bank" #singleSelect>       
+                <mat-option>
+                    <ngx-mat-select-search> </ngx-mat-select-search>
+                </mat-option>    
+                  <mat-option *ngFor="let categoria of categorias" [value]="categoria.catid">{{categoria.nombre}}</mat-option>
+              </mat-select>
+          </mat-form-field>
       </div>
 
       <br />

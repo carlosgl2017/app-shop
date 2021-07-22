@@ -28,6 +28,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
@@ -42,10 +43,6 @@ import { PedidoCreateComponent } from './components/views/pedido/pedido-create/p
 import { PedidoDeleteComponent } from './components/views/pedido/pedido-delete/pedido-delete.component';
 import { PedidoReadComponent } from './components/views/pedido/pedido-read/pedido-read.component';
 import { PedidoUpdateComponent } from './components/views/pedido/pedido-update/pedido-update.component';
-import { EntregaCreateComponent } from './components/views/entrega/entrega-create/entrega-create.component';
-import { EntregaDeleteComponent } from './components/views/entrega/entrega-delete/entrega-delete.component';
-import { EntregaReadComponent } from './components/views/entrega/entrega-read/entrega-read.component';
-import { EntregaUpdateComponent } from './components/views/entrega/entrega-update/entrega-update.component';
 /* import { DetalleComponent } from './components/views/producto/detalle/detalle.component'; */
 //-------------pdf dependencies
 // Import pdfmake-wrapper and the fonts to use
@@ -86,7 +83,11 @@ import { DatePipe } from "@angular/common";
 import { ReporteclienteComponent } from './components/views/cliente/reportecliente/reportecliente.component';
 import { ReporteproductoComponent } from './components/views/producto/reporteproducto/reporteproducto.component';
 import { AddEditUsuarioComponent } from './components/views/usuarios/add-edit-usuario/add-edit-usuario.component';
-import { ListUsuarioComponent } from './components/views/usuarios/list-usuario/list-usuario.component'; //para el formato de fechas
+import { ListUsuarioComponent } from './components/views/usuarios/list-usuario/list-usuario.component';
+//import { AddEditVentaComponent } from './components/views/venta/add-edit-venta/add-edit-venta.component';
+import { ListVentaComponent } from './components/views/venta/list-venta/list-venta.component';
+import { DetalleVentaComponent } from './components/views/entrega/detalle-venta/detalle-venta.component';
+import { DetalleClienteComponent } from './components/views/cliente/detalle-cliente/detalle-cliente.component'; //para el formato de fechas
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
 //-----------ends
@@ -106,10 +107,6 @@ PdfMakeWrapper.setFonts(pdfFonts);
     PedidoDeleteComponent,
     PedidoReadComponent,
     PedidoUpdateComponent,
-    EntregaCreateComponent,
-    EntregaDeleteComponent,
-    EntregaReadComponent,
-    EntregaUpdateComponent,
    /*  DetalleComponent, */
     AddEditAdquisicionComponent,
     ListAdquisicionComponent,
@@ -133,6 +130,10 @@ PdfMakeWrapper.setFonts(pdfFonts);
     ReporteproductoComponent,
     AddEditUsuarioComponent,
     ListUsuarioComponent,
+    //AddEditVentaComponent,
+    ListVentaComponent,
+    DetalleVentaComponent,
+    DetalleClienteComponent,
   ],
   imports: [
     BrowserModule,
@@ -163,7 +164,8 @@ PdfMakeWrapper.setFonts(pdfFonts);
     MatSortModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgxMatSelectSearchModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

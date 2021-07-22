@@ -21,6 +21,7 @@
     "bootstrap": "^5.0.1",
     "jquery": "^3.6.0",
     "mat-table-exporter": "^10.2.3",
+    "ngx-mat-select-search": "^3.3.0",
     "pdfmake": "^0.1.71",
     "pdfmake-wrapper": "^2.1.1",
     "popper.js": "^1.16.1",

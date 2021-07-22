@@ -11,6 +11,7 @@ import { ReporteclienteComponent } from './components/views/cliente/reporteclien
 import { AddEditCompraComponent } from './components/views/compra/add-edit-compra/add-edit-compra.component';
 import { AddEditConceptoComponent } from './components/views/concepto/add-edit-concepto/add-edit-concepto.component';
 import { ListConceptoComponent } from './components/views/concepto/list-concepto/list-concepto.component';
+import { DetalleVentaComponent } from './components/views/entrega/detalle-venta/detalle-venta.component';
 import { AddEditGrupoComponent } from './components/views/grupo/add-edit-grupo/add-edit-grupo.component';
 import { ListGrupoComponent } from './components/views/grupo/list-grupo/list-grupo.component';
 import { HomeComponent } from './components/views/home/home.component';
@@ -28,16 +29,13 @@ import { ProductoUpdateComponent } from './components/views/producto/producto-up
 import { AddEditProveedorComponent } from './components/views/proveedor/add-edit-proveedor/add-edit-proveedor.component';
 import { ListProveedorComponent } from './components/views/proveedor/list-proveedor/list-proveedor.component';
 import { ListReporteComponent } from './components/views/reporte/list-reporte/list-reporte.component';
+import { ListVentaComponent } from './components/views/venta/list-venta/list-venta.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent
   },
-  
-  
-
-
 
    //adquisicion
    { path: 'adquisiciones', component: ListAdquisicionComponent },
@@ -49,12 +47,19 @@ const routes: Routes = [
    { path: 'compras/create', component: AddEditCompraComponent },
    { path: 'adquisiciones/update/:compid', component: AddEditCompraComponent },
 
-   //compra
+   //cliente
    { path: 'clientes', component: ListClienteComponent},
    { path: 'clientes/create', component: AddEditClienteComponent},
    { path: 'clientes/update/:cliid', component: AddEditClienteComponent },
    { path: 'clientes/reporte', component: ReporteclienteComponent },
    
+   //ventas
+   { path: 'ventas', component: ListVentaComponent},
+
+   //entregas
+   { path: 'entregas:/id', component: DetalleVentaComponent},
+
+  
   {
     path: 'login',
     component: LoginComponent

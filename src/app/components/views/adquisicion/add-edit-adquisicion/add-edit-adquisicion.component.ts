@@ -15,11 +15,8 @@ import { AdquisicionService } from "../adquisicion.service";
   styleUrls: ["./add-edit-adquisicion.component.css"],
 })
 export class AddEditAdquisicionComponent implements OnInit {
-  /*-------autocomplete---------*/
-  autocompleteControl = new FormControl();
-  proveedores: string[] = ['One', 'Two', 'Three'];
-  proveedoresFiltrados: Observable<Proveedor[]>;
-/*-----------autocomplete------*/
+  //array proveedores
+  proveedores: Proveedor[]=[];
   //para editar
   adqid: any;
   accion = "Crear";
@@ -73,11 +70,7 @@ export class AddEditAdquisicionComponent implements OnInit {
       this.accion = "Editar";
       this.esEditar();
     }
-    this.proveedoresFiltrados = this.autocompleteControl.valueChanges
-      .pipe(
-        map(value=>typeof value === 'string'? value:value.nombre),
-        flatMap(value => value ? this._filter(value):[])
-      );
+    this.findAllProveedores();
   }
 
   create() {
@@ -181,13 +174,11 @@ export class AddEditAdquisicionComponent implements OnInit {
     });
   }
   
-  /*--------------------------------*/
-  private _filter(value: string): Observable<Proveedor[]> {
-    const filterValue = value.toLowerCase();
-    return this.serviceProveedores.filtrarProveedores(filterValue);
-  }
-
-  mostrarNombre(proveedor?:Proveedor):string| undefined{
-    return proveedor? proveedor.provnombre: undefined;
-  }
+  findAllProveedores() {
+    this.serviceProveedores.findAll().subscribe((respuesta) => {
+      console.log(respuesta);
+      this.proveedores = respuesta;
+      console.log(this.proveedores)
+    });
+  } 
 }

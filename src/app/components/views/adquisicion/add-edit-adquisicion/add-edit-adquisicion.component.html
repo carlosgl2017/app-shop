@@ -182,27 +182,11 @@
       
 
       <div class="col-md-3">
-        <mat-form-field>
-          <mat-label>Selecciones Proveedor</mat-label>
-          <input            
-            type="text"
-            placeholder="Seleccione un proveedor"
-            aria-label="Proveedores"
-            matInput           
-            [formControl]="autocompleteControl"
-            [matAutocomplete]="auto"
-          />
-          <mat-autocomplete
-            #auto="matAutocomplete"
-            [displayWith]="mostrarNombre"
-          >
-            <mat-option 
-              *ngFor="let proveedor of proveedoresFiltrados | async"
-              [value]="proveedor.provid"
-            >
-              {{proveedor.provnombre}}
-            </mat-option>
-          </mat-autocomplete>
+        <mat-form-field >
+          <mat-label>Seleccionar Proveedor</mat-label>
+          <mat-select name="proveedor_id" >           
+              <mat-option *ngFor="let proveedor of proveedores" [value]="proveedor.provid">{{proveedor.provnombre}}</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 

@@ -16,12 +16,8 @@ import { Categoria } from '../../categoria/categoria';
   styleUrls: ['./add-edit-producto.component.css']
 })
 export class AddEditProductoComponent implements OnInit {
-/*-------autocomplete---------*/
-  autocompleteControl = new FormControl();
-  categorias: string[] = ['One', 'Two', 'Three'];
-  categoriasFiltrados: Observable<Categoria[]>;
-/*-----------*/
-
+//get all category
+categorias: Categoria[] = []; 
 opcionesEstado: any[] = ['activado', 'desactivado'];
 //para editar
 prodid: any;
@@ -53,12 +49,7 @@ ngOnInit(): void {
     this.accion = "Editar";
     this.esEditar();
   }
-
-  this.categoriasFiltrados = this.autocompleteControl.valueChanges
-      .pipe(
-        map(value=>typeof value === 'string'? value:value.nombre),
-        flatMap(value => value ? this._filter(value):[])
-      );
+  this.findAllCategorias();
 }
 create() {
   const producto: Producto = {
@@ -107,15 +98,12 @@ esEditar(): void {
   });
 }
 
-/*--------------------------------*/
-
-  private _filter(value: string): Observable<Categoria[]> {
-    const filterValue = value.toLowerCase();
-    return this.serviceCategoria.filtrarCategorias(filterValue);
-  }
-
-  mostrarNombre(categoria?:Categoria):string| undefined{
-    return categoria? categoria.nombre: undefined;
-  }
+//obtener categorias
+findAllCategorias() {
+  this.serviceCategoria.findAll().subscribe((respuesta) => {
+    console.log(respuesta);
+    this.categorias = respuesta;
+  });
+}
 
 }
