@@ -173,7 +173,7 @@ export class AddEditAdquisicionComponent implements OnInit {
     });
     });
   }
-  
+
   findAllProveedores() {
     this.serviceProveedores.findAll().subscribe((respuesta) => {
       console.log(respuesta);

@@ -11,12 +11,12 @@ import { ReporteclienteComponent } from './components/views/cliente/reporteclien
 import { AddEditCompraComponent } from './components/views/compra/add-edit-compra/add-edit-compra.component';
 import { AddEditConceptoComponent } from './components/views/concepto/add-edit-concepto/add-edit-concepto.component';
 import { ListConceptoComponent } from './components/views/concepto/list-concepto/list-concepto.component';
-import { DetalleVentaComponent } from './components/views/entrega/detalle-venta/detalle-venta.component';
 import { AddEditGrupoComponent } from './components/views/grupo/add-edit-grupo/add-edit-grupo.component';
 import { ListGrupoComponent } from './components/views/grupo/list-grupo/list-grupo.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { LoginComponent } from './components/views/login/login.component';
 import { AddEditProductoComponent } from './components/views/producto/add-edit-producto/add-edit-producto.component';
+import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
 /* import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
 import { AuthGuard } from './components/views/producto/guards/auth.guard';
 import { RoleGuard } from './components/views/producto/guards/role.guard'; */
@@ -30,6 +30,11 @@ import { AddEditProveedorComponent } from './components/views/proveedor/add-edit
 import { ListProveedorComponent } from './components/views/proveedor/list-proveedor/list-proveedor.component';
 import { ListReporteComponent } from './components/views/reporte/list-reporte/list-reporte.component';
 import { ListVentaComponent } from './components/views/venta/list-venta/list-venta.component';
+import { VentaClienteFiltroComponent } from './components/views/venta/venta-cliente-filtro/venta-cliente-filtro.component';
+import { VentaCreateComponent } from './components/views/venta/venta-create/venta-create.component';
+import { VentaDetalleComponent } from './components/views/venta/venta-detalle/venta-detalle.component';
+import { VentaHomeComponent } from './components/views/venta/venta-home/venta-home.component';
+import { VentaListClienteComponent } from './components/views/venta/venta-list-cliente/venta-list-cliente.component';
 
 const routes: Routes = [
   {
@@ -54,10 +59,13 @@ const routes: Routes = [
    { path: 'clientes/reporte', component: ReporteclienteComponent },
    
    //ventas
-   { path: 'ventas', component: ListVentaComponent},
-
+   { path: 'ventas', component: VentaListClienteComponent},
+   //{ path: 'ventas/lista-cliente', component: VentaListClienteComponent},
+   { path: 'ventas/:id', component: VentaDetalleComponent},
+   { path: 'ventas/realizadas/:id', component: VentaClienteFiltroComponent},
+   { path: 'ventas/form/:clienteId', component: VentaCreateComponent},
    //entregas
-   { path: 'entregas:/id', component: DetalleVentaComponent},
+ 
 
   
   {
@@ -110,6 +118,7 @@ const routes: Routes = [
     { path: 'categorias/update/:catid', component: AddEditCategoriaComponent},
 
       //producto
+      {path:  'productos/upload/:prodid', component: DetalleComponent},
       { path: 'productos', component: ListProductoComponent },
       { path: 'productos/create', component: AddEditProductoComponent},
       { path: 'productos/update/:prodid', component: AddEditProductoComponent},

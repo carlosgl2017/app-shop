@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Categoria } from "../categoria";
@@ -25,7 +25,7 @@ export class AddEditCategoriaComponent implements OnInit {
   ) {
     this.myForm = this.fb.group({
       catid: [""],
-      nombre: [""],
+      nombre: ["",[Validators.required]],
       descripcion: [""],
       linea: [""],
       sublinea: [""],

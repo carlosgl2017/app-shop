@@ -1,0 +1,45 @@
+
+<div class="card bg-light" *ngIf="cliente">
+  <div class="card-header"> 
+      <div class="card-body">
+          <h4 class="card-title"></h4>
+              <div class="example-button-container">
+                  <button matTooltip="Regresar" routerLink="/ventas" mat-fab color="warn" aria-label="Example icon button with a home icon">
+                  <mat-icon>reply</mat-icon>
+                  </button>
+              </div>
+              
+              <table class="table table-striped table-hover table-bordered my-3">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>Fecha</th>
+                      <th>descripcion</th>
+                      <th>Importe</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of cliente.ventas">
+                          <td>{{item.venid}}</td>
+                          <td>{{item.createAt}}</td>
+                          <td>{{item.descripcion}}</td>
+                          <td>{{item.total}}</td>
+                          <td>
+                            <div class="example-button-container">
+                              <button [routerLink]="['/ventas/',item.venid]"  matTooltip="Ver comprobante de esta venta" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                                <mat-icon>visibility</mat-icon>
+                              </button>
+
+                              <button (click)="delete(item.venid)"  matTooltip="Ver comprobante de esta venta" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                  </tbody>
+              </table>
+
+      </div>
+  </div>
+</div>

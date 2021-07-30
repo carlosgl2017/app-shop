@@ -21,9 +21,13 @@ export class VentaService {
   }
 
 
-  create(venta: Venta): Observable<Venta> {
+  /* create(venta: Venta): Observable<Venta> {
     const url = `${this.baseUrl}/vent/add`;
     return this.http.post<Venta>(url, venta);
+  } */
+  create(factura: Venta): Observable<Venta> {
+    const url = `${this.baseUrl}/vent/add`;
+    return this.http.post<Venta>(url, factura);
   }
 
   mensagem(str: String): void {

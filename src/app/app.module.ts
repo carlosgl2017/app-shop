@@ -29,6 +29,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
@@ -86,8 +87,14 @@ import { AddEditUsuarioComponent } from './components/views/usuarios/add-edit-us
 import { ListUsuarioComponent } from './components/views/usuarios/list-usuario/list-usuario.component';
 //import { AddEditVentaComponent } from './components/views/venta/add-edit-venta/add-edit-venta.component';
 import { ListVentaComponent } from './components/views/venta/list-venta/list-venta.component';
-import { DetalleVentaComponent } from './components/views/entrega/detalle-venta/detalle-venta.component';
-import { DetalleClienteComponent } from './components/views/cliente/detalle-cliente/detalle-cliente.component'; //para el formato de fechas
+
+import { VentaListClienteComponent } from './components/views/venta/venta-list-cliente/venta-list-cliente.component';
+import { VentaHomeComponent } from './components/views/venta/venta-home/venta-home.component';
+import { VentaDetalleComponent } from './components/views/venta/venta-detalle/venta-detalle.component';
+import { VentaCreateComponent } from './components/views/venta/venta-create/venta-create.component';
+import { VentaClienteFiltroComponent } from './components/views/venta/venta-cliente-filtro/venta-cliente-filtro.component';
+import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
+
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
 //-----------ends
@@ -132,8 +139,12 @@ PdfMakeWrapper.setFonts(pdfFonts);
     ListUsuarioComponent,
     //AddEditVentaComponent,
     ListVentaComponent,
-    DetalleVentaComponent,
-    DetalleClienteComponent,
+    VentaListClienteComponent,
+    VentaHomeComponent,
+    VentaDetalleComponent,
+    VentaCreateComponent,
+    VentaClienteFiltroComponent,
+    DetalleComponent,
   ],
   imports: [
     BrowserModule,
@@ -165,7 +176,8 @@ PdfMakeWrapper.setFonts(pdfFonts);
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    MatTooltipModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

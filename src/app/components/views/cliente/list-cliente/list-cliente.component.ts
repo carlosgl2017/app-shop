@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import { MensajeConfirmacionComponent } from 'src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component';
 import { Cliente } from '../cliente';
 import { ClienteService } from '../cliente.service';
-import { DetalleClienteComponent } from '../detalle-cliente/detalle-cliente.component';
 
 @Component({
   selector: 'app-list-cliente',
@@ -88,16 +87,6 @@ export class ListClienteComponent implements OnInit {
   navegarParaClienteCreate() {
     this.router.navigate(["clientes/create"])
   }
-
-
-
-  /*------------Dialog modal---------------*/
-  openDialog(){
-    const dialogRef = this.dialog.open(DetalleClienteComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-  
+ 
 
 }

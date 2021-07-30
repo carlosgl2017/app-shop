@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
 import {flatMap, map} from 'rxjs/operators';
 import { CategoriaService } from '../../categoria/categoria.service';
 import { Categoria } from '../../categoria/categoria';
+import swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-edit-producto',
@@ -16,9 +17,9 @@ import { Categoria } from '../../categoria/categoria';
   styleUrls: ['./add-edit-producto.component.css']
 })
 export class AddEditProductoComponent implements OnInit {
-//get all category
-categorias: Categoria[] = []; 
-opcionesEstado: any[] = ['activado', 'desactivado'];
+
+  //get all category
+categorias:Categoria[] = []; 
 //para editar
 prodid: any;
 accion = "Añadir";
@@ -34,11 +35,11 @@ constructor(
 ) {
   this.myForm = this.fb.group({
     prodid: [""],
+    prodprecioventa: ["",[Validators.required]],
     prodnombre: ["",[Validators.required]],
     proddescrip: [""],
     prodestado: [""],
-    categoria_id: [""],
-    tipo_documento: [""],
+    categoria: ["",[Validators.required]]
   });
   const idParam = "prodid";
   this.prodid = this.aRoute.snapshot.params[idParam];
@@ -50,13 +51,17 @@ ngOnInit(): void {
     this.esEditar();
   }
   this.findAllCategorias();
+
+  
+  
 }
 create() {
   const producto: Producto = {
     prodid: this.myForm.get("prodid").value,
     prodnombre: this.myForm.get("prodnombre").value,
+    prodprecioventa: this.myForm.get("prodprecioventa").value,
     proddescrip: this.myForm.get("proddescrip").value,
-    categoria_id: this.myForm.get("categoria_id").value,
+    categoria: this.myForm.get("categoria").value
   };
   if (this.prodid !== undefined) {
     this.update(producto);
@@ -91,9 +96,10 @@ esEditar(): void {
   this.service.findById(this.prodid).subscribe((respuesta) => {
     this.myForm.patchValue({
       prodnombre  :respuesta.prodnombre ,
+      prodprecioventa  :respuesta.prodprecioventa,
       proddescrip :respuesta.proddescrip,
       prodestado:respuesta.prodestado,
-      categoria_id:respuesta.categoria_id,
+      categoria:respuesta.categoria,
     });
   });
 }
@@ -104,6 +110,10 @@ findAllCategorias() {
     console.log(respuesta);
     this.categorias = respuesta;
   });
+}
+
+cancel(): void {
+  this.router.navigate(['productos'])
 }
 
 }

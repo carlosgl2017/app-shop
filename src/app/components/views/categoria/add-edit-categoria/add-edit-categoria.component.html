@@ -9,6 +9,9 @@
           <mat-label>Nombre</mat-label>
           <input type="text" matInput formControlName="nombre" />
         </mat-form-field>
+        <div *ngIf=" myForm.get('nombre').hasError('required') && myForm.get('nombre').touched" style="margin-top: -20px">
+          <span class="mda-form-msg">Este campo es <strong>requerido</strong></span>
+        </div>
       </div>
 
       <div class="col-md-3">

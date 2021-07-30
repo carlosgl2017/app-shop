@@ -1,0 +1,60 @@
+<div class="card bg-light" *ngIf="venta">
+  <div class="card-header">{{titulo}}: {{venta.descripcion}}</div>
+  <div class="card-body">
+      <div class="example-button-container">
+          <button matTooltip="Regresar" routerLink="/ventas" mat-fab color="warn" aria-label="Example icon button with a home icon">
+          <mat-icon>reply</mat-icon>
+          </button>
+      </div>
+
+    <ul class="list-group my-2">
+      <li class="list-group-item list-group-item-primary">Datos del cliente</li>
+      <li class="list-group-item">{{venta.cliente.nombre}}</li>
+      <li class="list-group-item">{{venta.cliente.apellidos}}</li>
+    </ul>
+
+    <ul class="list-group my-2">
+      <li class="list-group-item list-group-item-primary">Datos de la venta</li>
+      <li class="list-group-item"><strong>Numero comprobante:</strong> {{venta.venid}}</li>
+      <li class="list-group-item"><strong>Descripción:</strong> {{venta.descripcion}}</li>
+      <li class="list-group-item"><strong>Fecha:</strong> {{venta.createAt}}</li>
+    </ul>
+
+    <table class="table table-striped table-hover table-bordered my-3">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of venta.entregas">
+          <td>{{item.producto.prodnombre}}</td>
+          <td>{{item.producto.prodprecioventa}}</td>
+          <td>{{item.entcantidad}}</td>
+          <td>{{item.importe}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="row">
+      <h3 class="text-end">
+        <strong>Total importe:</strong> <span> {{venta.total}}</span>
+      </h3>
+    </div>
+      
+       
+
+    <div class="card border-info mb-4" >
+      <div class="card card-header">
+        Observaciones
+      </div>
+      <div class="card card-body">
+        <p *ngIf="!venta.observacion">No tiene observación</p>
+        <p *ngIf="venta.observacion">{{venta.observacion}}</p>
+      </div>
+    </div>
+  </div>
+</div>

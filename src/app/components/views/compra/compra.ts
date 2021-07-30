@@ -1,3 +1,5 @@
+import { Producto } from "../producto/producto";
+
 export class Compra {
     compid : number;
     adqid :number;
@@ -14,14 +16,13 @@ export class Compra {
     comppreciosubtotal :number;
     comppreciounitario :number;
     compum_impuesto :number;
-    prodid :number; 
-
+    prodid :number;
     compimporte :number;
     compprecioventa :number;    
     compcant :number;
     compstockactual:number;
     compfechaelaboracion:Date;
     compfechavencimiento:Date;
-
+    producto?:Producto;
 
 }

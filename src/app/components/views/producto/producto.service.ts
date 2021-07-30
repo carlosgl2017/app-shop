@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { Observable, throwError  } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Producto } from './producto';
+import swal from 'sweetalert2';
+import { catchError, map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -54,4 +56,21 @@ export class ProductoService {
     const url = `${this.baseUrl}/prod/sel/${fechaini}/${fechafin}`;
     return this.http.get<Producto[]>(url)
   }
+
+  subirFoto(archivo: File,prodid):Observable<Producto>{
+    let formData = new FormData();
+    formData.append("archivo",archivo);           
+    formData.append("prodid",prodid);    
+    return this.http.post(`${this.baseUrl}/prod/upload`,formData).pipe(
+      map((response:any)=>response.producto as Producto),
+      catchError(e=>{
+        console.error(e.error.mensaje);
+        swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      }
+      )
+    );       
+  }
+
+  
 }
