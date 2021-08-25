@@ -61,6 +61,7 @@
             <th>Producto</th>
             <th>Precio</th>
             <th>Cantidad</th>
+            <th>En stock</th>
             <th>Total</th>
             <th>Eliminar</th>
           </tr>
@@ -70,6 +71,7 @@
             <td>{{item.producto.prodnombre}}</td>
             <td>{{item.producto.prodprecioventa}}</td>
             <td><input type="number" value="{{item.entcantidad}}" class="form-control col-sm-4" (change)="actualizarCantidad(item.producto.prodid, $event)"></td>
+            <td>{{item.producto.stock}}</td>
             <td>{{item.calcularImporte()}}</td>
             <td><button class="btn btn-danger btn-sm" type="button"
               (click)="eliminarItemVenta(item.producto.prodid)">x</button></td>

@@ -119,6 +119,7 @@ export class VentaCreateComponent implements OnInit {
       this.autocompleteControl.setErrors({ 'invalid': true });
     }
 
+
     if (facturaForm.form.valid && this.venta.entregas.length > 0) {
       this.ventaService.create(this.venta).subscribe(venta => {
         swal.fire(this.titulo, `Factura ${venta.descripcion} creada con éxito!`, 'success');

@@ -11,6 +11,7 @@ export class Producto {
     prodnombre : string;  
     proddescrip: string;
     prodprecioventa: number;
+    stock?:number;
     categoria?:Categoria;  //relacion con la tabla categoria  
     compra?:Compra;
 }

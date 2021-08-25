@@ -38,7 +38,6 @@ type TableRow = [
   String,
   String,
   String,
-  String,
   String
 ];
 
@@ -58,9 +57,8 @@ export class ListProveedorComponent implements OnInit {
     "provempresa",
     "provfax",
     "provlugar",
-    "provmaterno",
     "provnombre",
-    "provpaterno",
+    "provapellidos",
     "provtelef",
     "provtipo",
     "provurl",
@@ -195,7 +193,6 @@ export class ListProveedorComponent implements OnInit {
         "CI/NIT",
         "NOMBRE",
         "PATERNO",
-        "MATERNO",
         "TIPO",
         "EMPRESA",
         "TELEFONO",
@@ -216,8 +213,7 @@ export class ListProveedorComponent implements OnInit {
       row.provid,
       row.provcinit,
       row.provnombre,
-      row.provpaterno,
-      row.provmaterno,
+      row.provapellidos,
       row.provtipo,
       row.provempresa,
       row.provtelef,

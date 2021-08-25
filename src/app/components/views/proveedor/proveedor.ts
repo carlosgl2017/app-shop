@@ -9,9 +9,8 @@ export interface Proveedor {
   provestado :string,
   provfax :string,
   provlugar :string,
-  provmaterno :string,
   provnombre :string,
-  provpaterno :string,
+  provapellidos :string,
   provtelef :string,
   provtipo :string,
   provurl :string

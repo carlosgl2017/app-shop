@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { MensajeConfirmacionComponent } from "src/app/components/shared/mensaje-confirmacion/mensaje-confirmacion.component";
 import { Producto } from "../producto";
 import { ProductoService } from "../producto.service";
+import { VerimagenComponent } from "../verimagen/verimagen.component";
 
 @Component({
   selector: "app-list-producto",
@@ -20,6 +21,7 @@ export class ListProductoComponent implements OnInit {
     "prodid",
     "prodnombre",
     "prodprecioventa",
+    "stock",
     "proddescrip",
     "categoria_id",
     "imagen",
@@ -60,7 +62,6 @@ export class ListProductoComponent implements OnInit {
       width: "350px",
       data: { mensaje: "Esta seguro que desea eliminar el producto" },
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result === "aceptar") {
         this.service.delete(index).subscribe(
@@ -82,4 +83,20 @@ export class ListProductoComponent implements OnInit {
   navegarParaProductoCreate() {
     this.router.navigate(["productos/create"]);
   }
+
+  /*------------Dialog modal---------------*/
+ /*  openDialog(producto:Producto){
+    const dialogRef = this.dialog.open(VerimagenComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+   }  */  
+   
+   openDialog(producto:Producto){
+    this.dialog.open(VerimagenComponent,{
+      width:'400px',
+      height:'450px',
+      data:producto
+    })
+   } 
 }

@@ -1,0 +1,19 @@
+
+<mat-card style="text-align: center;">
+<mat-card-header>
+    <mat-card-title>
+        Producto
+    </mat-card-title>
+</mat-card-header>
+    <img mat-card-image class="foto" src="http://localhost:8080/prod/uploads/img/{{producto.prodimagtxt}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p>
+            <strong>Nombre producto:</strong> {{producto.prodnombre}}<br/>
+            <strong>Precio producto:</strong>{{producto.prodprecioventa}} Bs.
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" mat-dialog-close >Cerrar</button>
+    </mat-card-actions>
+
+</mat-card>

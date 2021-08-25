@@ -12,14 +12,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
-import { FormsModule,ReactiveFormsModule } from "@angular/forms";
+import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { MatTableExporterModule } from 'mat-table-exporter';
+import {MatTableExporterModule} from 'mat-table-exporter';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -53,7 +53,7 @@ PdfMakeWrapper.setFonts(pdfFonts); */
 import { AddEditAdquisicionComponent } from './components/views/adquisicion/add-edit-adquisicion/add-edit-adquisicion.component';
 import { ListAdquisicionComponent } from './components/views/adquisicion/list-adquisicion/list-adquisicion.component';
 import { MensajeConfirmacionComponent } from './components/shared/mensaje-confirmacion/mensaje-confirmacion.component';
-import { AddEditCompraComponent } from './components/views/compra/add-edit-compra/add-edit-compra.component';
+
 import { AddEditProveedorComponent } from './components/views/proveedor/add-edit-proveedor/add-edit-proveedor.component';
 import { ListProveedorComponent } from './components/views/proveedor/list-proveedor/list-proveedor.component';
 import { AddEditGrupoComponent } from './components/views/grupo/add-edit-grupo/add-edit-grupo.component';
@@ -94,6 +94,8 @@ import { VentaDetalleComponent } from './components/views/venta/venta-detalle/ve
 import { VentaCreateComponent } from './components/views/venta/venta-create/venta-create.component';
 import { VentaClienteFiltroComponent } from './components/views/venta/venta-cliente-filtro/venta-cliente-filtro.component';
 import { DetalleComponent } from './components/views/producto/detalle/detalle.component';
+import { VerimagenComponent } from './components/views/producto/verimagen/verimagen.component';
+import { AdquisicionCreateComponent } from './components/views/adquisicion/adquisicion-create/adquisicion-create.component';
 
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -118,7 +120,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
     AddEditAdquisicionComponent,
     ListAdquisicionComponent,
     MensajeConfirmacionComponent,
-    AddEditCompraComponent,
+    /* AddEditCompraComponent, */
     AddEditProveedorComponent,
     ListProveedorComponent,
     AddEditGrupoComponent,
@@ -145,6 +147,9 @@ PdfMakeWrapper.setFonts(pdfFonts);
     VentaCreateComponent,
     VentaClienteFiltroComponent,
     DetalleComponent,
+    VerimagenComponent,
+    AdquisicionCreateComponent,
+   /*  ListCompraComponent, */
   ],
   imports: [
     BrowserModule,
